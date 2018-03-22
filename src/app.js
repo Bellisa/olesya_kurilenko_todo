@@ -5,11 +5,11 @@ import { Main } from './Main/';
 import { Footer } from './Footer/';
  
 const component = (
-    <React.Fragment>
-        <Header/>
+    <React.Fragment >
+        <Header />
         <Main />
-        <Footer/>
-    </React.Fragment>
+        <Footer />
+    </React.Fragment >
 );
-ReactDom.render(component, document.getElementById('app'));
+ReactDom.render( component, document.getElementById('app') );
 
