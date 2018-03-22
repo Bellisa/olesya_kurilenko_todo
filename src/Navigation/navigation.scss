@@ -1,4 +1,6 @@
+@import "../variable";
 .main-nav{
+    background: $navigation-bg;
     ul{
         display: flex;
         list-style: none;

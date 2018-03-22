@@ -1,5 +1,26 @@
-.main-nav ul {
-  display: flex;
-  list-style: none; }
-  .main-nav ul li {
-    margin: 0 0 0 15px; }
+.header {
+  background: #c3c9c6;
+  padding: 10px 0px 10px 10px; }
+.main-nav {
+  background: #bbcac2; }
+  .main-nav ul {
+    display: flex;
+    list-style: none; }
+    .main-nav ul li {
+      margin: 0 0 0 15px; }
+.main {
+  background: #eceeed;
+  padding: 20px 0px 20px 20px; }
+.aside {
+  background: #baf3d3;
+  display: inline-block;
+  width: 38%;
+  min-height: 200px; }
+.content {
+  background: #caf7f7;
+  display: inline-block;
+  min-height: 200px;
+  width: 60%; }
+.footer {
+  padding: 20px 20px 20px 20px;
+  background: #969997; }

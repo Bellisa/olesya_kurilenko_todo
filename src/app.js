@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { Navigation } from './Navigation/';
-
-const Time = () => <time>{String(new Date())}</time>
-
+import { Header } from './Header/';
+import { Main } from './Main/';
+import { Footer } from './Footer/';
+ 
 const component = (
     <React.Fragment>
-        <h1>Hello</h1>
-        <Navigation />
-        <Time/>
+        <Header/>
+        <Main />
+        <Footer/>
     </React.Fragment>
 );
 ReactDom.render(component, document.getElementById('app'));
