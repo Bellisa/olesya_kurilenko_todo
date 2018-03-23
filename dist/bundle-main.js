@@ -109,7 +109,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b8131c1c163c9e74780a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "97cb5c393a390c23244a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -827,6 +827,181 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./Aside/Aside.js":
+/*!************************!*\
+  !*** ./Aside/Aside.js ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.Aside = undefined;\n\nvar _react = __webpack_require__(/*! react */ \"../node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\n__webpack_require__(/*! ./aside.scss */ \"./Aside/aside.scss\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Aside = exports.Aside = function Aside() {\n    return _react2.default.createElement(\n        'div',\n        { 'class': 'aside' },\n        'Aside'\n    );\n};\n\n//# sourceURL=webpack:///./Aside/Aside.js?");
+
+/***/ }),
+
+/***/ "./Aside/aside.scss":
+/*!**************************!*\
+  !*** ./Aside/aside.scss ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./Aside/aside.scss?");
+
+/***/ }),
+
+/***/ "./Aside/index.js":
+/*!************************!*\
+  !*** ./Aside/index.js ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _Aside = __webpack_require__(/*! ./Aside */ \"./Aside/Aside.js\");\n\nObject.keys(_Aside).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function get() {\n      return _Aside[key];\n    }\n  });\n});\n\n//# sourceURL=webpack:///./Aside/index.js?");
+
+/***/ }),
+
+/***/ "./Content/Content.js":
+/*!****************************!*\
+  !*** ./Content/Content.js ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.Content = undefined;\n\nvar _react = __webpack_require__(/*! react */ \"../node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\n__webpack_require__(/*! ./content.scss */ \"./Content/content.scss\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Content = exports.Content = function Content() {\n    return _react2.default.createElement(\n        'div',\n        { 'class': 'content' },\n        'content'\n    );\n};\n\n//# sourceURL=webpack:///./Content/Content.js?");
+
+/***/ }),
+
+/***/ "./Content/content.scss":
+/*!******************************!*\
+  !*** ./Content/content.scss ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./Content/content.scss?");
+
+/***/ }),
+
+/***/ "./Content/index.js":
+/*!**************************!*\
+  !*** ./Content/index.js ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _Content = __webpack_require__(/*! ./Content */ \"./Content/Content.js\");\n\nObject.keys(_Content).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function get() {\n      return _Content[key];\n    }\n  });\n});\n\n//# sourceURL=webpack:///./Content/index.js?");
+
+/***/ }),
+
+/***/ "./Footer/Footer.js":
+/*!**************************!*\
+  !*** ./Footer/Footer.js ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.Footer = undefined;\n\nvar _react = __webpack_require__(/*! react */ \"../node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\n__webpack_require__(/*! ./footer.scss */ \"./Footer/footer.scss\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Footer = exports.Footer = function Footer() {\n    return _react2.default.createElement(\n        'div',\n        { 'class': 'footer' },\n        'Footer'\n    );\n};\n\n//# sourceURL=webpack:///./Footer/Footer.js?");
+
+/***/ }),
+
+/***/ "./Footer/footer.scss":
+/*!****************************!*\
+  !*** ./Footer/footer.scss ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./Footer/footer.scss?");
+
+/***/ }),
+
+/***/ "./Footer/index.js":
+/*!*************************!*\
+  !*** ./Footer/index.js ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _Footer = __webpack_require__(/*! ./Footer */ \"./Footer/Footer.js\");\n\nObject.keys(_Footer).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function get() {\n      return _Footer[key];\n    }\n  });\n});\n\n//# sourceURL=webpack:///./Footer/index.js?");
+
+/***/ }),
+
+/***/ "./Header/Header.js":
+/*!**************************!*\
+  !*** ./Header/Header.js ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.Header = undefined;\n\nvar _react = __webpack_require__(/*! react */ \"../node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\n__webpack_require__(/*! ./header.scss */ \"./Header/header.scss\");\n\nvar _Navigation = __webpack_require__(/*! ../Navigation/ */ \"./Navigation/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Header = exports.Header = function Header() {\n    return _react2.default.createElement(\n        'header',\n        { 'class': 'header' },\n        _react2.default.createElement(_Navigation.Navigation, null)\n    );\n};\n\n//# sourceURL=webpack:///./Header/Header.js?");
+
+/***/ }),
+
+/***/ "./Header/header.scss":
+/*!****************************!*\
+  !*** ./Header/header.scss ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./Header/header.scss?");
+
+/***/ }),
+
+/***/ "./Header/index.js":
+/*!*************************!*\
+  !*** ./Header/index.js ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _Header = __webpack_require__(/*! ./Header */ \"./Header/Header.js\");\n\nObject.keys(_Header).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function get() {\n      return _Header[key];\n    }\n  });\n});\n\n//# sourceURL=webpack:///./Header/index.js?");
+
+/***/ }),
+
+/***/ "./Main/Main.js":
+/*!**********************!*\
+  !*** ./Main/Main.js ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n   value: true\n});\nexports.Main = undefined;\n\nvar _react = __webpack_require__(/*! react */ \"../node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\n__webpack_require__(/*! ./main.scss */ \"./Main/main.scss\");\n\nvar _Aside = __webpack_require__(/*! ../Aside/ */ \"./Aside/index.js\");\n\nvar _Content = __webpack_require__(/*! ../Content/ */ \"./Content/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Main = exports.Main = function Main() {\n   return _react2.default.createElement(\n      'div',\n      { 'class': 'main' },\n      _react2.default.createElement(_Aside.Aside, null),\n      _react2.default.createElement(_Content.Content, null)\n   );\n};\n\n//# sourceURL=webpack:///./Main/Main.js?");
+
+/***/ }),
+
+/***/ "./Main/index.js":
+/*!***********************!*\
+  !*** ./Main/index.js ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _Main = __webpack_require__(/*! ./Main */ \"./Main/Main.js\");\n\nObject.keys(_Main).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function get() {\n      return _Main[key];\n    }\n  });\n});\n\n//# sourceURL=webpack:///./Main/index.js?");
+
+/***/ }),
+
+/***/ "./Main/main.scss":
+/*!************************!*\
+  !*** ./Main/main.scss ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./Main/main.scss?");
+
+/***/ }),
+
 /***/ "./Navigation/Navigation.js":
 /*!**********************************!*\
   !*** ./Navigation/Navigation.js ***!
@@ -870,7 +1045,7 @@ eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./Na
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _react = __webpack_require__(/*! react */ \"../node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(/*! react-dom */ \"../node_modules/react-dom/index.js\");\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _Navigation = __webpack_require__(/*! ./Navigation/ */ \"./Navigation/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Time = function Time() {\n    return _react2.default.createElement(\n        'time',\n        null,\n        String(new Date())\n    );\n};\n\nvar component = _react2.default.createElement(\n    _react2.default.Fragment,\n    null,\n    _react2.default.createElement(\n        'h1',\n        null,\n        'Hello'\n    ),\n    _react2.default.createElement(_Navigation.Navigation, null),\n    _react2.default.createElement(Time, null)\n);\n_reactDom2.default.render(component, document.getElementById('app'));\n\n//# sourceURL=webpack:///./app.js?");
+eval("\n\nvar _react = __webpack_require__(/*! react */ \"../node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(/*! react-dom */ \"../node_modules/react-dom/index.js\");\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _Header = __webpack_require__(/*! ./Header/ */ \"./Header/index.js\");\n\nvar _Main = __webpack_require__(/*! ./Main/ */ \"./Main/index.js\");\n\nvar _Footer = __webpack_require__(/*! ./Footer/ */ \"./Footer/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar component = _react2.default.createElement(\n    _react2.default.Fragment,\n    null,\n    _react2.default.createElement(_Header.Header, null),\n    _react2.default.createElement(_Main.Main, null),\n    _react2.default.createElement(_Footer.Footer, null)\n);\n_reactDom2.default.render(component, document.getElementById('app'));\n\n//# sourceURL=webpack:///./app.js?");
 
 /***/ })
 
