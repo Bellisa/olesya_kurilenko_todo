@@ -4,8 +4,10 @@ import { Aside } from '../Aside/';
 import { Content } from '../Content/';
 
 export const Main = () => (
-    <div class='main'>
-       <Aside />
-       <Content />
+  <React.Fragment>
+    <div className="main">
+      <Aside />
+      <Content />
     </div>
+  </React.Fragment>
 );

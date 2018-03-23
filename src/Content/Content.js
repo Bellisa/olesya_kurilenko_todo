@@ -2,7 +2,7 @@ import React from 'react';
 import './content.scss';
 
 export const Content = () => (
-    <div class='content'>
-        content
-    </div>
+  <div className="content">
+    content
+  </div>
 );
