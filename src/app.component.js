@@ -1,13 +1,14 @@
 import React from 'react';
+import 'bootstrap';
+import './app.scss';
 import { Header } from './Header';
 import { Main } from './Main';
 import { Footer } from './Footer';
 
 export const component = (
-  <div className="container">
-    <h1>ROOT COMPONENT</h1>
+  <React.Fragment >
     <Header />
     <Main />
     <Footer />
-  </div>
+  </React.Fragment >
 );

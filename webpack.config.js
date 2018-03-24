@@ -3,11 +3,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 
-let stylesLoader = [
-  {loader: 'style-loader'},
-  {loader: "css-loader"},
-  {loader: "sass-loader"}
-];
+/* const stylesLoader = [
+  { loader: 'style-loader' },
+  { loader: 'css-loader' },
+  { loader: 'sass-loader' }
+]; */
 
 const plugins = [
   new HtmlWebpackPlugin({
@@ -37,7 +37,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env','react'],
+            presets: ['env', 'react'],
             plugins: ['syntax-dynamic-import']
           }
         }
@@ -48,8 +48,8 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            {loader: "css-loader"},
-            {loader: "sass-loader"}
+            { loader: 'css-loader' },
+            { loader: 'sass-loader' }
           ]
         })
       },
@@ -58,7 +58,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'eslint-loader',
-       }
+      }
 
     ]
   },
@@ -70,7 +70,7 @@ module.exports = {
       chunks: 'all'
     },
   },
-mode : 'development',
+  mode: 'development',
   devServer: {
     contentBase: path.resolve('dist'),
     publicPath: '/',

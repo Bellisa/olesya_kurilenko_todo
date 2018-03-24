@@ -1,11 +1,4 @@
 @import "../variable";
-.main-nav{
-    background: $navigation-bg;
-    ul{
-        display: flex;
-        list-style: none;
-        li{
-            margin: 0 0 0 15px;
-        }
-    }
+.bg-nav{
+    background: rgb(0, 128, 192);
 }
