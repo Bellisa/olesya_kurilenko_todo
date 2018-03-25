@@ -1,9 +1,11 @@
 import React from 'react';
 import './navigation.scss';
+import { ComNavMenu } from '../Components/ComNavMenu';
+import { ComWelcomInfo } from '../Components/ComWelcomInfo';
 
-export const Navigation = () => (
+export const Navigation = ({ pages }) => (
   <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-nav">
-    <a className="navbar-brand font-italic " href="/" title="Olesya Kurilenko">
+    <a className="navbar-brand font-italic " href="/" title="Olesya Kurilenko : ToDo">
       O.K. ToDo
     </a>
     <button
@@ -16,24 +18,10 @@ export const Navigation = () => (
       <span className="navbar-toggler-icon" />
     </button>
     <div className="collapse navbar-collapse" id="navbarCollapse">
-      <ul className="navbar-nav mr-auto">
-        <li className="nav-item active">
-          <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="/">Link</a>
-        </li>
-      </ul>
+      <ComNavMenu pages={pages} />
+    </div>
+    <div className="flex-row ml-md-auto d-none d-md-flex text-white">
+      <ComWelcomInfo time={new Date().getHours()} name="Ilia" />
     </div>
   </nav>
-
 );
-/*  <nav className="main-nav">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/">About</a></li>
-        {
-          props.isLogin && <li><a href="user">User</a></li>
-        }
-      </ul>
-    </nav> */
