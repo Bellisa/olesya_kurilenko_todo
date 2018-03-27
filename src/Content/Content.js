@@ -1,4 +1,3 @@
-import React from 'react';
 import './content.scss';
 import { ComNumList } from '../Components/ComNumList';
 import { ComUsersGridList } from '../Components/ComUsersGridList';

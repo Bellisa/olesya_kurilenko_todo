@@ -1,4 +1,3 @@
-import React from 'react';
 import './header.scss';
 import { Navigation } from '../Navigation/';
 import { pages } from '../constants';

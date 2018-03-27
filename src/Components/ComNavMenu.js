@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const ComNavMenu = ({ pages }) => (
   <ul className="navbar-nav mr-auto">
     {

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const GetNumMass = (start, end, step) => {
   const mass = [];
   let startNum = start;

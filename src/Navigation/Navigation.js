@@ -1,4 +1,3 @@
-import React from 'react';
 import './navigation.scss';
 import { ComNavMenu } from '../Components/ComNavMenu';
 import { ComWelcomInfo } from '../Components/ComWelcomInfo';

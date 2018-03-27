@@ -1,4 +1,3 @@
-import React from 'react';
 import 'bootstrap';
 import './main.scss';
 import { Aside } from '../Aside/';

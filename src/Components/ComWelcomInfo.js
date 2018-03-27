@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const ComWelcomInfo = ({ time = new Date().getHours(), name }) => {
   if (time >= 22 || time < 3) return (<span>Good night{name && `, ${name}`}!</span>);
   if (time > 3 || time < 12) return (<span>Good morning{name && `, ${name}`}!</span>);
