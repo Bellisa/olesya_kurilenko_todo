@@ -14,7 +14,10 @@ const plugins = [
     title: 'Test app',
     template: 'index.html'
   }),
-  new webpack.ProvidePlugin({ React: 'react' }),
+  new webpack.ProvidePlugin({
+    React: 'react',
+    Component: ['react', 'Component']
+  }),
   new webpack.HotModuleReplacementPlugin(),
   new ExtractTextPlugin({
     filename: 'styles.css',
@@ -38,7 +41,8 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['env', 'react'],
-            plugins: ['syntax-dynamic-import']
+            plugins: ['syntax-dynamic-import',
+              'transform-class-properties']
           }
         }
       },
@@ -58,6 +62,9 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'eslint-loader',
+        options: {
+          emitWarning: true
+        }
       }
 
     ]
