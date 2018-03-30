@@ -1,4 +1,11 @@
 export class ComUserTasksInfo extends Component {
+  state = {
+    userId: 1,
+    name: 'UserName',
+    done: 1,
+    inProgress: 1,
+    waiting: 1
+  }
   constructor({
     userId = 1, name = 'UserName', done = 1, inProgress = 1, waiting = 1
   }) {

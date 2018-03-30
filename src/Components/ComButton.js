@@ -12,7 +12,7 @@ export class ComButton extends Component {
   render() {
     return (
       <div>
-        <button className="btn btn-primary btn-lg" onClick={this.btnClick} >
+        <button className={`btn btn-primary btn-lg ${this.state.isActive && 'active'}`} onClick={this.btnClick} >
           {
             this.state.isActive ? 'hide' : 'show'
           }
