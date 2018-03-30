@@ -16,17 +16,13 @@ export class Content extends Component {
   onUserClick = (userId) => {
     fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
       .then(data => data.json())
-      .then(postsData => this.setState({
-        posts: postsData
-      }));
+      .then(posts => this.setState({ posts }));
   }
 
   getUsers = () => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(data => data.json())
-      .then(users => this.setState({
-        users: users.sort((prev, next) => prev.name > next.name)
-      }));
+      .then(users => this.setState({ users }));
   }
 
   render() {
