@@ -9,3 +9,14 @@
 .min-height{
   min-height:60%;
 }
+.box-shadow {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+}
+.list-unstyled li:hover{
+  text-decoration: underline;
+}
+.list-unstyled li{
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+}

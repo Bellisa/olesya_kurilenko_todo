@@ -1,6 +1,6 @@
 import './navigation.scss';
 import { ComNavMenu } from '../Components/ComNavMenu';
-import { ComWelcomInfo } from '../Components/ComWelcomInfo';
+// import { ComWelcomInfo } from '../Components/ComWelcomInfo';
 
 export const Navigation = ({ pages }) => (
   <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-nav">
@@ -20,7 +20,7 @@ export const Navigation = ({ pages }) => (
       <ComNavMenu pages={pages} />
     </div>
     <div className="flex-row ml-md-auto d-none d-md-flex text-white">
-      <ComWelcomInfo time={new Date().getHours()} name="Ilia" />
+      {/* <ComWelcomInfo time={new Date().getHours()} name="Ilia" /> */}
     </div>
   </nav>
 );

@@ -1,8 +1,17 @@
 import './aside.scss';
+import { ComButton } from '../Components/ComButton';
+import { ComUserTasksInfo } from '../Components/ComUserTasksInfo';
+import { ComGeolocation } from '../Components/ComGeolocation';
 
 export const Aside = () => (
-  <div className="my-3 p-3 col-md-3">
-    <h5 className="border-bottom border-gray pb-2 mb-0">Aside</h5>
-  </div>
+  <aside className="col-md-2 my-3 p-3 bg-white rounded box-shadow">
+    <div className="flex-md-row mb-4">
+      <div className="d-flex flex-column align-items-start">
+        <ComButton />
+        <ComUserTasksInfo />
+        <ComGeolocation />
+      </div>
+    </div>
+  </aside>
 );
 
