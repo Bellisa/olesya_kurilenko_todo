@@ -1,6 +1,6 @@
 // import 'bootstrap';
 import './main.scss';
-import { Aside } from '../Aside/';
+// import { Aside } from '../Aside/';
 import { Content } from '../Content/';
 
 export class Main extends Component {
@@ -8,7 +8,6 @@ export class Main extends Component {
     return (
       <main role="main" className="container container-padding">
         <div className="row ">
-          <Aside />
           <Content />
         </div>
       </main>);
