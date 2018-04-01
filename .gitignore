@@ -55,6 +55,9 @@ typings/
 # Output of 'backup'
 *.backup
 
+# Output of 'back'
+*.back
+
 # Yarn Integrity file
 .yarn-integrity
 
