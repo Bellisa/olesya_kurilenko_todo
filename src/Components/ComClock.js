@@ -21,7 +21,7 @@ export class ComClock extends Component {
     clearInterval(this.timer);
   }
 
-  formatDateStr = str => ((str.length === 1) ? `0${str}` : `${str}`);
+  formatDateStr = str => ((str.toString().length === 1) ? `0${str}` : `${str}`);
 
   render() {
     return (
