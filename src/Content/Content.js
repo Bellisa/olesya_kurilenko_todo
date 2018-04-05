@@ -8,8 +8,7 @@ export class Content extends Component {
     return (
       <div className="my-3 p-3 col-md-12 bg-white rounded box-shadow min-height">
         <Form /><br />
-        <ComClock />
-        <ComAddUserForm />
+        <ComAddUserForm disabled={['email']} />
       </div>
     );
   }
