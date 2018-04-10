@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 
+const CopyWebpackPlugin = require('copy-webpack-plugin');//for loaded images
+const images = ['jpg', 'jpeg', 'png', 'gif', 'svg'];//for loaded images
+
 /* const stylesLoader = [
   { loader: 'style-loader' },
   { loader: 'css-loader' },
@@ -18,6 +21,9 @@ const plugins = [
     React: 'react',
     Component: ['react', 'Component']
   }),
+  new CopyWebpackPlugin([
+    ...images.map(ext => ({ from: `**/*/*.${ext}`, to: 'images/[name].[ext]' }))
+  ]),
   new webpack.HotModuleReplacementPlugin(),
   new ExtractTextPlugin({
     filename: 'styles.css',

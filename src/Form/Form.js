@@ -13,7 +13,9 @@ export class Form extends Component {
     }
     this.setState({ [target.name]: target.value });
   }
+getFormValue() {
 
+  }
   render() {
     const { name, age, role, mail } = this.state;
     return (

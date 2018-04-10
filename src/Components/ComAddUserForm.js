@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export class ComAddUserForm extends Component {
   constructor(props) {
     super(props);
@@ -44,14 +46,28 @@ export class ComAddUserForm extends Component {
     if (error) {
       return;
     }
-
-    console.log(this.state);
+    const res = this.getFormValue();
+    console.log(res);
   }
-  getDisableState() {
-    return this.fields.some(({ label }) => {
-      const { value, error } = this.state[label];
-      return !value || error;
+
+  getFormValue() {
+    const form = {};
+
+    this.fields.forEach((field) => {
+      form[field.label] = this.state[field.label].value;
     });
+    return form;
+  }
+
+  getDisableState() {
+    const { excluded = [], disabled = [] } = this.props;
+
+    return this.fields
+      .filter(({ label }) => !excluded.includes(label) && !disabled.includes(label))
+      .some(({ label }) => {
+        const { value, error } = this.state[label];
+        return !value || error;
+      });
   }
   getFormObj = () => {
 
@@ -93,3 +109,13 @@ export class ComAddUserForm extends Component {
     );
   }
 }
+
+ComAddUserForm.propTypes = {
+  excluded: PropTypes.array,
+  disabled: PropTypes.array
+};
+
+ComAddUserForm.defaultProps = {
+  excluded: [],
+  disabled: []
+};

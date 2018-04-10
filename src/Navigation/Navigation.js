@@ -5,7 +5,7 @@ import { ComNavMenu } from '../Components/ComNavMenu';
 export const Navigation = ({ pages }) => (
   <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-nav">
     <a className="navbar-brand font-italic " href="/" title="Olesya Kurilenko : ToDo">
-      O.K. ToDo
+      <img src="images/1.jpg" alt="O.K. ToDo" width="50" />
     </a>
     <button
       className="navbar-toggler"

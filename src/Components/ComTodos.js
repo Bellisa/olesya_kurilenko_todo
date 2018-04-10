@@ -1,5 +1,4 @@
 import { ComTodoRow } from './ComTodoRow';
-import { ComFilter } from './ComFilter';
 
 export class ComTodos extends Component {
   constructor(props) {
@@ -30,6 +29,14 @@ export class ComTodos extends Component {
   }
 
   onActionsClick = (id, extion) => {
+    switch (extion) {
+      case 'delete':
+        break;
+      case 'complete':
+        break;
+      case 'processing':
+        break;
+    }
     console.log(id, extion);
   }
   onFilterClick = (text) => {
@@ -44,7 +51,10 @@ export class ComTodos extends Component {
     }
     return (
       <div>
-        <ComFilter onFilter={this.onFilterClick} /><br />
+        <input
+          type="text"
+          onChange={({ target }) => this.setState({ filter: target.value })}
+        /><br />
         {todos.map(todo => (
           <ComTodoRow onTodoClick={this.onActionsClick} actions={this.actions} key={todo.id} todo={todo} />
         ))}
