@@ -14,8 +14,7 @@ export const TabNav = ({ list, select, active }) => {
           className="nav-item"
         >
           <a
-          //className='nav-link'
-             className={(active === index) ? 'nav-link active' : 'nav-link'}
+            className={(active === index) ? 'nav-link active' : 'nav-link'}
             href="#"
             onClick={e => onClick(e, index)}
           >
@@ -30,5 +29,10 @@ TabNav.prototype = {
   select: PropTypes.func,
   list: PropTypes.array,
   active: PropTypes.number
+};
+TabNav.defaultProps = {
+  select: _ => _,
+  list: [],
+  active: 0
 };
 
