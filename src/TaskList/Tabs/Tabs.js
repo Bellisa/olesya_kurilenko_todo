@@ -29,7 +29,7 @@ export class Tabs extends Component {
           select={this.clickTab}
           active={this.state.id}
         />
-        <div className='contentTab'>
+        <div className="contentTab">
           {contents[this.state.id]}
         </div>
       </section>
