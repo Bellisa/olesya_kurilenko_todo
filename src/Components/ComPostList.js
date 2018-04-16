@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const ComPostList = (props) => {
   const posts = (props.posts || [])
     .map(post => (
@@ -6,4 +8,12 @@ export const ComPostList = (props) => {
         {post.body}
       </p>));
   return <div><h4>Posts</h4>{posts}</div>;
+};
+
+ComPostList.propTypes = {
+  posts: PropTypes.array
+};
+
+ComPostList.defaultProps = {
+  posts: []
 };
