@@ -3,7 +3,8 @@ import { Form } from '../Form/';
 import { ComAddUserForm } from '../Components/ComAddUserForm';
 import { ComEditField } from '../Components/ComEditField';
 import { ComTodos } from '../Components/ComTodos';
-import { Tabs } from '../Tabs/';
+import { Tabs, Tab } from '../Tabs/';
+import { TaskList } from '../TaskList/';
 
 export class Content extends Component {
   tabs = [
@@ -22,7 +23,27 @@ export class Content extends Component {
         <ComAddUserForm disabled={['email']} />
         <ComEditField onlose={this.onBlueInput} /><br />
         <ComTodos />
-        <Tabs tabs={this.tabs} />
+        {/* <Tabs tabs={this.tabs} /> */}
+        {/* <Tabs>
+
+          <Tab title='Tab 1'>
+            <h1>Title 1</h1>
+            <article>Lorem ipsum 1</article>
+          </Tab>
+
+          <Tab title='Tab 2'>
+            <h1>Title 2</h1>
+            <article>Lorem ipsum 2</article>
+          </Tab>
+
+          <Tab title='Tab 3'>
+            <h1>Title 3</h1>
+            <article>Lorem ipsum 3</article>
+          </Tab>
+
+        </Tabs> */}
+<TaskList />
+
       </div>
     );
   }

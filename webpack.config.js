@@ -35,7 +35,8 @@ module.exports = {
   entry: './app.js',
   context: path.resolve('src'),
   output: {
-    filename: 'bundle-[name].js'
+    filename: 'bundle-[name].js',
+    publicPath: '/'
   },
 
   module: {
@@ -88,7 +89,8 @@ module.exports = {
     contentBase: path.resolve('dist'),
     publicPath: '/',
     port: 9000,
-    hot: true
+    hot: true,
+    historyApiFallback: true
   }
 };
 

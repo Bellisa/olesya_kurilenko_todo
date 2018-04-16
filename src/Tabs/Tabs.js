@@ -1,33 +1,34 @@
 import { TabNav } from './TabNav';
-import { TabContent } from './TabContent';
+import { Tab } from './Tab';
 
 export class Tabs extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      content: '',
       id: 0
     };
   }
   componentDidMount() {
-    this.clickTab(0);
+    // this.clickTab(0);
   }
   clickTab = (id) => {
     this.setState({
-      content: this.props.tabs[id].content,
       id
     });
   }
   render() {
+    const tabs = this.props.children.filter(child => child.type === Tab);
+    const links = tabs.map(tab => tab.props.title);
+    const contents = tabs.map(tab => tab.props.children);
     return (
       <section className="tab">
         <TabNav
-          list={
-            this.props.tabs.map(({ id, title }) => ({ id, title }))
-          }
+          list={links}
           select={this.clickTab}
+          active={this.state.id}
         />
-        <TabContent content={this.state.content} />
+        {contents[this.state.id]}
       </section>
     );
   }

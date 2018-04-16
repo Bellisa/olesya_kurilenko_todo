@@ -1,5 +1,12 @@
 import ReactDom from 'react-dom';
-import { component } from './app.component.js';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { App } from './app.component.js';
 
-ReactDom.render(component, document.getElementById('app'));
+const Root = (
+  <Router>
+    <App />
+  </Router>
+);
+
+ReactDom.render(Root, document.getElementById('app'));
 

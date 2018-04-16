@@ -5,7 +5,7 @@ import { Header } from './Header';
 import { Main } from './Main';
 import { Footer } from './Footer';
 
-export const component = (
+export const App = () => (
   <React.Fragment >
     <Header />
     <Main />
