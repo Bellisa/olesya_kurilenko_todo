@@ -1,5 +1,6 @@
 import { TabNav } from './TabNav';
 import { Tab } from './Tab';
+import './tabs.scss';
 
 export class Tabs extends Component {
   constructor(props) {
@@ -28,8 +29,11 @@ export class Tabs extends Component {
           select={this.clickTab}
           active={this.state.id}
         />
-        {contents[this.state.id]}
+        <div className='contentTab'>
+          {contents[this.state.id]}
+        </div>
       </section>
+
     );
   }
 }

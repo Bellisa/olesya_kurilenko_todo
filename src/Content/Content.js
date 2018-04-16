@@ -1,9 +1,8 @@
 import './content.scss';
-import { Form } from '../Form/';
-import { ComAddUserForm } from '../Components/ComAddUserForm';
-import { ComEditField } from '../Components/ComEditField';
-import { ComTodos } from '../Components/ComTodos';
-import { Tabs, Tab } from '../Tabs/';
+// import { Form } from '../Form/';
+// import { ComAddUserForm } from '../Components/ComAddUserForm';
+// import { ComEditField } from '../Components/ComEditField';
+// import { ComTodos } from '../Components/ComTodos';
 import { TaskList } from '../TaskList/';
 
 export class Content extends Component {
@@ -19,10 +18,10 @@ export class Content extends Component {
   render() {
     return (
       <div className="my-3 p-3 col-md-12 bg-white rounded box-shadow min-height">
-        <Form /><br />
+        {/* <Form /><br />
         <ComAddUserForm disabled={['email']} />
         <ComEditField onlose={this.onBlueInput} /><br />
-        <ComTodos />
+        <ComTodos /> */}
         {/* <Tabs tabs={this.tabs} /> */}
         {/* <Tabs>
 
@@ -42,7 +41,7 @@ export class Content extends Component {
           </Tab>
 
         </Tabs> */}
-<TaskList />
+        <TaskList />
 
       </div>
     );

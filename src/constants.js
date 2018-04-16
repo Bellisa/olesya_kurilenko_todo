@@ -1,4 +1,4 @@
-export const pages = ['Home', 'Users', 'Contacts'];
+export const pages = ['Home', 'Task List', 'Contacts'];
 
 export const users = [
   { firstName: 'Ivan', lastName: 'Ivanov', age: 30 },
