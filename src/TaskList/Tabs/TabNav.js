@@ -9,21 +9,10 @@ export const TabNav = ({ list, select, active }) => {
   return (
     <nav className="nav-tab">
       <ul className="nav nav-tabs">{list.map((el, index) =>
-<<<<<<< HEAD
         (
           <li
             key={index}
             className="nav-item"
-=======
-        (<li
-          key={index}
-          className="nav-item"
-        >
-          <a
-            className={(active === index) ? 'nav-link active' : 'nav-link'}
-            href="#"
-            onClick={e => onClick(e, index)}
->>>>>>> 19-react-jsx
           >
             <a
               className={(active === index) ? 'nav-link active' : 'nav-link'}
