@@ -1,0 +1,51 @@
+@import "~bootstrap/scss/bootstrap";
+.contentTab div{
+  width: 30%;
+}
+@mixin getIconLeft ( $url, $color, $decor)
+{
+  color: $color;
+  text-decoration: $decor;
+  content: "";
+  display: block;
+  background: url($url) no-repeat;
+  height: 35px;
+  padding-left: 35px;
+  float: left;
+}
+@mixin getIconRight ( $url, $color )
+{
+  color: $color;
+  content: "";
+  display: block;
+  background: url($url) no-repeat;
+  height: 35px;
+  padding-right: 35px;
+  float: right;
+}
+.todoCompl{
+  @include getIconLeft('/images/icon/checked25.png', $gray-600, line-through)
+}
+
+.todoProc{
+  @include getIconLeft('/images/icon/reload25_1.png', $gray-800, 'none')
+}
+.todoWait{
+  @include getIconLeft('/images/icon/clock25.png', $gray-800, 'none')
+}
+.todoDel{
+  @include getIconLeft('/images/icon/cancel25.png', $gray-800, 'none')
+}
+.todoComplRight{
+  @include getIconRight('/images/icon/checked25.png', $gray-600)
+}
+
+.todoProcRight{
+  @include getIconRight('/images/icon/reload25_1.png', $gray-800)
+}
+.todoWaitRight{
+  @include getIconRight('/images/icon/clock25.png', $gray-800)
+}
+.todoDelRight{
+  @include getIconRight('/images/icon/cancel25.png', $gray-800)
+}

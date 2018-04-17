@@ -5,17 +5,16 @@ export const ComUserList = (props) => {
     .map(user => (
       <li
         key={user.id}
-        onClick={() => props.click(user.id)}
       >
-        {user[props.field]}
+        {user.name}
       </li>));
   return <ol className="list-unstyled mb-0">{users}</ol>;
 };
 
 ComUserList.propTypes = {
-  click: PropTypes.func
+  users: PropTypes.array
 };
 
 ComUserList.defaultProps = {
-  click: _ => _
+  users: []
 };

@@ -3,8 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 
-const CopyWebpackPlugin = require('copy-webpack-plugin');//for loaded images
-const images = ['jpg', 'jpeg', 'png', 'gif', 'svg'];//for loaded images
+const CopyWebpackPlugin = require('copy-webpack-plugin');// for loaded images
+
+const images = ['jpg', 'jpeg', 'png', 'gif', 'svg'];// for loaded images
 
 /* const stylesLoader = [
   { loader: 'style-loader' },
@@ -19,10 +20,14 @@ const plugins = [
   }),
   new webpack.ProvidePlugin({
     React: 'react',
-    Component: ['react', 'Component']
+    Component: ['react', 'Component'],
+    $: 'jquery',
+    jQuery: 'jquery'
   }),
   new CopyWebpackPlugin([
-    ...images.map(ext => ({ from: `**/*/*.${ext}`, to: 'images/[name].[ext]' }))
+    ...images.map(ext => ({ from: `**/asset/*.${ext}`, to: 'images/asset/[name].[ext]' })),
+    ...images.map(ext => ({ from: `**/icon/*.${ext}`, to: 'images/icon/[name].[ext]' })),
+    ...images.map(ext => ({ from: `*/*.${ext}`, to: 'images/[name].[ext]' }))
   ]),
   new webpack.HotModuleReplacementPlugin(),
   new ExtractTextPlugin({

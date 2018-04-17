@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { TabNav } from './TabNav';
 import { Tab } from './Tab';
 import './tabs.scss';
@@ -7,7 +8,7 @@ export class Tabs extends Component {
     super(props);
 
     this.state = {
-      id: 0
+      id: Number(props.selectedIndex) || 0
     };
   }
   componentDidMount() {
@@ -33,7 +34,15 @@ export class Tabs extends Component {
           {contents[this.state.id]}
         </div>
       </section>
-
     );
   }
 }
+
+Tabs.propTypes = {
+  children: PropTypes.element.isRequired,
+  selectedIndex: PropTypes.number
+};
+
+Tabs.defaultProps = {
+  selectedIndex: 0
+};
