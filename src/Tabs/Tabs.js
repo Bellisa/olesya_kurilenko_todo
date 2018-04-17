@@ -14,6 +14,15 @@ export class Tabs extends Component {
   componentDidMount() {
     // this.clickTab(0);
   }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.selectedIndex !== this.state.id) {
+      this.setState({
+        id: nextProps
+      });
+    }
+  }
+
   clickTab = (id) => {
     this.setState({
       id
@@ -39,7 +48,6 @@ export class Tabs extends Component {
 }
 
 Tabs.propTypes = {
-  children: PropTypes.element.isRequired,
   selectedIndex: PropTypes.number
 };
 

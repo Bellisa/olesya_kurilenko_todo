@@ -1,5 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
-.contentTab div{
+.content-short{
   width: 30%;
 }
 @mixin getIconLeft ( $url, $color, $decor)
@@ -23,29 +23,29 @@
   padding-right: 35px;
   float: right;
 }
-.todoCompl{
+.todo-compl{
   @include getIconLeft('/images/icon/checked25.png', $gray-600, line-through)
 }
 
-.todoProc{
+.todo-proc{
   @include getIconLeft('/images/icon/reload25_1.png', $gray-800, 'none')
 }
-.todoWait{
+.todo-wait{
   @include getIconLeft('/images/icon/clock25.png', $gray-800, 'none')
 }
-.todoDel{
+.todo-del{
   @include getIconLeft('/images/icon/cancel25.png', $gray-800, 'none')
 }
-.todoComplRight{
+.todo-compl-right{
   @include getIconRight('/images/icon/checked25.png', $gray-600)
 }
 
-.todoProcRight{
+.todo-proc-right{
   @include getIconRight('/images/icon/reload25_1.png', $gray-800)
 }
-.todoWaitRight{
+.todo-wait-right{
   @include getIconRight('/images/icon/clock25.png', $gray-800)
 }
-.todoDelRight{
+.todo-del-right{
   @include getIconRight('/images/icon/cancel25.png', $gray-800)
 }
