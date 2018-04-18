@@ -8,17 +8,9 @@ export class UsersInfo extends Component {
     super(props);
     this.state = {
       users: [],
-      imagesUrl: []
+      imagesUrl: this.getImagesUrl('images/asset')
     };
   }
-
-  // getImagesUrl = path => new Promise((resolve) => {
-  // const massurl = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg'];
-  // fs.readdir(path, (err, items) => {
-  // console.log(massurl.map(img => `${path}/${img}`));
-  // const collecttions = items.filter(img => this.regFiles.test(img));
-  //  resolve(massurl.map(img => `${path}/${img}`));
-  // });
 
   getImagesUrl = (path) => {
     const massurl = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg'];
@@ -41,8 +33,11 @@ export class UsersInfo extends Component {
     this.getUsers('https://jsonplaceholder.typicode.com/users')
       .then(text => this.setState({ users: text }))
       .catch(console.log);
+<<<<<<< HEAD
     const arr = this.getImagesUrl('');
     this.setState({ imagesUrl: arr });
+=======
+>>>>>>> 20-react-jsx
   }
 
   render() {
