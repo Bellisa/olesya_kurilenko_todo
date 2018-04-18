@@ -1,10 +1,18 @@
+import { NavLink } from 'react-router-dom';
+
 export const ComNavMenu = ({ pages }) => (
   <ul className="navbar-nav mr-auto">
     {
       (pages || [])
         .map(page => (
           <li className="nav-item" key={page}>
-            <a className="nav-link" href={`/${page.toLowerCase()}`}>{page}</a>
+            <NavLink
+              className="nav-link"
+              activeClassName="active"
+              to={`/${page.toLowerCase()}`}
+            >
+              {page}
+            </NavLink>
           </li>
         ))
     }

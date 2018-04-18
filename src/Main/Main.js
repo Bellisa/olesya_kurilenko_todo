@@ -1,15 +1,12 @@
-// import 'bootstrap';
+import React from 'react';
+import { Content } from '../Content';
 import './main.scss';
-// import { Aside } from '../Aside/';
-import { Content } from '../Content/';
 
-export class Main extends Component {
-  render() {
-    return (
-      <main role="main" className="container container-padding">
-        <div className="row ">
-          <Content />
-        </div>
-      </main>);
-  }
-}
+export const Main = props => (
+  <React.Fragment>
+    <main className="main">
+      <Content />
+      <button onClick={() => props.history.push('/tasks')} />
+    </main>
+  </React.Fragment>
+);

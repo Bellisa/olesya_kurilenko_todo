@@ -1,4 +1,6 @@
+import { Redirect } from 'react-router-dom';
 import './content.scss';
+
 // import { Form } from '../Form/';
 // import { ComAddUserForm } from '../Components/ComAddUserForm';
 // import { ComEditField } from '../Components/ComEditField';
@@ -7,18 +9,18 @@ import { TaskList } from '../TaskList/';
 import { UsersInfo } from '../UsersInfo/';
 
 export class Content extends Component {
-  tabs = [
-    { id: 0, title: 'Tab 1', content: 'Some text is here' },
-    { id: 1, title: 'Tab 2', content: 'Another content' },
-    { id: 2, title: 'Tab 1', content: 'Third text' }
-  ];
-
-  onBlueInput = (value) => {
-    console.log(value);
+  state = {
+    tasks: false
   }
   render() {
     return (
-      <div className="my-3 p-3 col-md-12 bg-white rounded box-shadow min-height">
+      <div>
+        hello
+        <button
+        onClick={() => this.setState({ tasks: true })}>
+        Tasks
+        </button>
+        {this.state.tasks && <Redirect to="/tasks" />}
         {/* <Form /><br />
         <ComAddUserForm disabled={['email']} />
         <ComEditField onlose={this.onBlueInput} /><br />
@@ -42,8 +44,8 @@ export class Content extends Component {
           </Tab>
 
         </Tabs> */}
-        <TaskList />
-        <UsersInfo />
+        {/* <TaskList />
+        <UsersInfo /> */}
       </div>
     );
   }

@@ -41,10 +41,8 @@ export class UsersInfo extends Component {
     this.getUsers('https://jsonplaceholder.typicode.com/users')
       .then(text => this.setState({ users: text }))
       .catch(console.log);
-
-    this.getImagesUrl('')
-      .then(text => this.setState({ imagesUrl: text }))
-      .catch(console.log);
+    const arr = this.getImagesUrl('');
+    this.setState({ imagesUrl: arr });
   }
 
   render() {
