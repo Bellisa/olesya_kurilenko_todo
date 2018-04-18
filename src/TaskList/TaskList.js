@@ -1,13 +1,27 @@
-import { Tabs, Tab } from './Tabs/';
+import { Tabs, Tab } from '../Tabs/';
 import { tasksInWeek } from './tasksInWeek';
+import { TodoRows } from '../Todos/';
 
 export class TaskList extends Component {
-  days = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+  days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+  actions = ['delete', 'complete', 'processing'];
   constructor(props) {
     super(props);
     this.state = {
       tasksWeek: tasksInWeek
     };
+  }
+
+  onActionsClick = (id, extion) => {
+    switch (extion) {
+      case 'delete':
+        break;
+      case 'complete':
+        break;
+      case 'processing':
+        break;
+    }
+    console.log(id, extion);
   }
 
   componentDidMount() {
@@ -18,7 +32,7 @@ export class TaskList extends Component {
 
   render() {
     return (
-      <Tabs>
+      <Tabs selectedIndex={new Date().getDay()}>
         {
           this.state.tasksWeek.map((tasks, index) =>
             (
@@ -26,9 +40,13 @@ export class TaskList extends Component {
                 key={index}
                 title={this.days[index]}
               >
-                <ol>
-                  {tasks.map(task => <li key={task.id} >{task.title}</li>)}
-                </ol>
+                {tasks.map(task =>
+                  (<TodoRows
+                    key={task.id}
+                    onTodoClick={this.onActionsClick}
+                    actions={this.actions}
+                    todo={task}
+                  />))}
                 <button type="button" className="btn btn-primary">Add</button>
               </Tab>))
         }

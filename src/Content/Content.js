@@ -4,6 +4,7 @@ import './content.scss';
 // import { ComEditField } from '../Components/ComEditField';
 // import { ComTodos } from '../Components/ComTodos';
 import { TaskList } from '../TaskList/';
+import { UsersInfo } from '../UsersInfo/';
 
 export class Content extends Component {
   tabs = [
@@ -42,7 +43,7 @@ export class Content extends Component {
 
         </Tabs> */}
         <TaskList />
-
+        <UsersInfo />
       </div>
     );
   }

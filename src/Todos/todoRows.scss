@@ -1,0 +1,51 @@
+@import "~bootstrap/scss/bootstrap";
+.content-short{
+  width: 30%;
+}
+@mixin getIconLeft ( $url, $color, $decor)
+{
+  color: $color;
+  text-decoration: $decor;
+  content: "";
+  display: block;
+  background: url($url) no-repeat;
+  height: 35px;
+  padding-left: 35px;
+  float: left;
+}
+@mixin getIconRight ( $url, $color )
+{
+  color: $color;
+  content: "";
+  display: block;
+  background: url($url) no-repeat;
+  height: 35px;
+  padding-right: 35px;
+  float: right;
+}
+.todo-compl{
+  @include getIconLeft('/images/icon/checked25.png', $gray-600, line-through)
+}
+
+.todo-proc{
+  @include getIconLeft('/images/icon/reload25_1.png', $gray-800, 'none')
+}
+.todo-wait{
+  @include getIconLeft('/images/icon/clock25.png', $gray-800, 'none')
+}
+.todo-del{
+  @include getIconLeft('/images/icon/cancel25.png', $gray-800, 'none')
+}
+.todo-compl-right{
+  @include getIconRight('/images/icon/checked25.png', $gray-600)
+}
+
+.todo-proc-right{
+  @include getIconRight('/images/icon/reload25_1.png', $gray-800)
+}
+.todo-wait-right{
+  @include getIconRight('/images/icon/clock25.png', $gray-800)
+}
+.todo-del-right{
+  @include getIconRight('/images/icon/cancel25.png', $gray-800)
+}
