@@ -33,11 +33,6 @@ export class UsersInfo extends Component {
     this.getUsers('https://jsonplaceholder.typicode.com/users')
       .then(text => this.setState({ users: text }))
       .catch(console.log);
-<<<<<<< HEAD
-    const arr = this.getImagesUrl('');
-    this.setState({ imagesUrl: arr });
-=======
->>>>>>> 20-react-jsx
   }
 
   render() {
