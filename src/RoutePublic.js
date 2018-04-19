@@ -3,7 +3,7 @@ import { Main } from './Main';
 import { TaskList } from './TaskList/';
 import { NotFound } from './app/NotFound';
 
-export class RoutePublick extends Component {
+export class RoutePublic extends Component {
   constructor(props) {
     super(props);
   }
