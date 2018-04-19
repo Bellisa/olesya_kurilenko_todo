@@ -14,6 +14,7 @@ export class App extends Component {
   }
 
   setLoginState = (login, user) => {
+    console.log('user', user);
     this.setState({ login, user });
   }
   render() {
@@ -32,6 +33,7 @@ export class App extends Component {
               <Pages
                 login={login}
                 setLoginState={this.setLoginState}
+                user={user}
               />
             </div>
           </div>

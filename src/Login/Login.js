@@ -8,11 +8,19 @@ export class Login extends Component {
   submit = (e) => {
     this.setState({ showLoader: true });
     const value = e.target.name.value;
+    const user = {
+      email: `${value}@mail.ru`,
+      login: value,
+      'first name': 'first name',
+      'last name': 'last name',
+      password: 'password'
+    };
     e.preventDefault();
 
     setTimeout(() => {
       this.setState({ showLoader: false });
-      this.props.onLogin(true, value);
+      console.log(user);
+      this.props.onLogin(true, user);
     }, 5000);
   }
   render() {

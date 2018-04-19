@@ -5,6 +5,7 @@ export class ComAddUserForm extends Component {
     super(props);
     this.fields = [
       { label: 'email', reg: /^\w+@\w+\.[a-z]{2,}$/ },
+      { label: 'login', reg: /^[^ ]{3,20}$/ },
       { label: 'first name', reg: /^[^ ]{3,20}$/ },
       { label: 'last name', reg: /^[^ ]{3,20}$/ },
       { label: 'password', reg: /^[^ ]{6,20}$/, secure: true },
@@ -13,9 +14,18 @@ export class ComAddUserForm extends Component {
 
     this.state = { error: '' };
 
-    this.fields.forEach(field => (this.state[field.label] = { value: '' }));
+    this.fields.forEach(field => (this.state[field.label] = { value: this.getPropsValue(field.label) }));
   }
-
+  getPropsValue = (name) => {
+    console.log(name);
+    if (!this.props.user) {
+      return '';
+    }
+    if (this.props.user[name]) {
+      return this.props.user[name];
+    }
+    return 'z';
+  }
   setValue = ({ target }) => {
     this.setState({ [target.name]: { value: target.value } });
   }
@@ -47,7 +57,7 @@ export class ComAddUserForm extends Component {
       return;
     }
     const res = this.getFormValue();
-    setTimeout(() => {  }, 5000);
+    setTimeout(() => { }, 5000);
     console.log(res);
   }
 

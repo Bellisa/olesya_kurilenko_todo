@@ -10,12 +10,12 @@ export const ComUserNav = ({
           <a
             className="nav-link dropdown-toggle float-right"
             href="#"
-            id={user}
+            id={user.login}
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
           >
-            {user}
+            {user.login}
           </a>
           <div className="dropdown-menu float-right pr-5" aria-labelledby={user}>
             <NavLink to="/profile" className="dropdown-item" >
