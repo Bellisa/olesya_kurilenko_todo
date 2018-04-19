@@ -47,6 +47,7 @@ export class ComAddUserForm extends Component {
       return;
     }
     const res = this.getFormValue();
+    setTimeout(() => {  }, 5000);
     console.log(res);
   }
 

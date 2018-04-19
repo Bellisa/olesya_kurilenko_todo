@@ -4,5 +4,5 @@ export const Loading = ({ show }) => {
   if (show) {
     return (<div className="loader" />);
   }
-  return (<div />);
+  return (null);
 };

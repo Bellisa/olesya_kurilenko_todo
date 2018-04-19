@@ -1,20 +1,30 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { Login } from './Login';
+import { Main } from './Main';
+import { TaskList } from './TaskList/';
+import { NotFound } from './app/NotFound';
 
 export class RouteProtected extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <Switch>
+      <Redirect from="/login" to="/" />
         <Route
-          path="/login"
-          render={() => <Login onLogin={this.props.setLoginState} />}
+          path="/"
+          exact
+          component={Main}
         />
-        <Redirect to="login" />
+        <Route
+          path="/home"
+          exactm
+          component={Main}
+        />
+        <Route
+          path="/tasks"
+          component={TaskList}
+        />
+        <Route component={NotFound} />
       </Switch>
     );
   }
 }
+

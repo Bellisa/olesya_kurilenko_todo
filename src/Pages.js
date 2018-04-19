@@ -5,10 +5,10 @@ export class Pages extends Component {
   render() {
     return this.props.login ?
       (
-        <RoutePublic {...this.props} />
+        <RouteProtected {...this.props} />
       ) :
       (
-        <RouteProtected {...this.props} />
+        <RoutePublic {...this.props} />
       );
   }
 }

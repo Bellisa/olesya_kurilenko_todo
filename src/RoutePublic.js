@@ -1,32 +1,20 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { Main } from './Main';
-import { TaskList } from './TaskList/';
-import { NotFound } from './app/NotFound';
+import { Login } from './Login';
+import { UserRegistration } from './UserRegistration/UserRegistration';
 
 export class RoutePublic extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <Switch>
-        <Redirect from="/login" to="/" />
         <Route
-          path="/"
-          exact
-          component={Main}
+          path="/login"
+          render={() => <Login onLogin={this.props.setLoginState} />}
         />
         <Route
-          path="/home"
-          exactm
-          component={Main}
+          path="/registration"
+          component={UserRegistration}
         />
-        <Route
-          path="/tasks"
-          component={TaskList}
-        />
-        <Route component={NotFound} />
+        <Redirect to="login" />
       </Switch>
     );
   }

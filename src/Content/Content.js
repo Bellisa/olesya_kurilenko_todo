@@ -1,5 +1,6 @@
 import { Redirect } from 'react-router-dom';
 import './content.scss';
+import { ComAddUserForm } from '../Components/ComAddUserForm';
 
 // import { Form } from '../Form/';
 // import { ComAddUserForm } from '../Components/ComAddUserForm';
@@ -20,6 +21,7 @@ export class Content extends Component {
         onClick={() => this.setState({ tasks: true })}>
         Tasks
         </button>
+
         {this.state.tasks && <Redirect to="/tasks" />}
         {/* <Form /><br />
         <ComAddUserForm disabled={['email']} />

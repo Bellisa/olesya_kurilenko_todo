@@ -20,17 +20,21 @@ export const ComUserNav = ({
           <div className="dropdown-menu float-right pr-5" aria-labelledby={user}>
             <NavLink to="/profile" className="dropdown-item" >
               Profile
-        </NavLink>
+            </NavLink>
             <NavLink to="/" className="dropdown-item" onClick={() => setLoginState(false, '')} >
               Logout
-        </NavLink>
+            </NavLink>
           </div>
         </div>
       </React.Fragment >
     );
-
   }
-  return (<div />);
-}
-
+  return (
+    <div className="navbar-nav pr-5 dropdown  float-right">
+      <NavLink to="/registration" className="" >
+        Registration
+      </NavLink>
+    </div>
+  );
+};
 
