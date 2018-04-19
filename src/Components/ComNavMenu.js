@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom';
 
-export const ComNavMenu = ({ pages }) => (
+export const ComNavMenu = ({
+  pages
+}) => (
   <ul className="navbar-nav mr-auto">
     {
       (pages || [])
@@ -16,6 +18,7 @@ export const ComNavMenu = ({ pages }) => (
           </li>
         ))
     }
+
   </ul>
 );
 
