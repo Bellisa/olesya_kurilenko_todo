@@ -1,8 +1,7 @@
 import { ComAddUserForm } from '../Components/ComAddUserForm';
 
-export const UserRegistration = () => (
+export const Profile = ({ user }) => (
   <React.Fragment >
-    <ComAddUserForm />
+    <ComAddUserForm user={user} disabled={['email']} />
   </React.Fragment>
 );
-
