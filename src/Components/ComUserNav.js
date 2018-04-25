@@ -1,27 +1,37 @@
 import { NavLink } from 'react-router-dom';
 
+const LogoutUser = () => {
+  fetch('http://localhost:8081/logout', {
+    method: 'GET',
+    credentials: 'include',
+    headers: {
+      'Content-type': 'application/json; charset=utf-8'
+    }
+  });
+};
+
 export const ComUserNav = ({
-  user, setLoginState, login
+  user, setLoginState
 }) => {
-  if (login) {
+  if (user) {
     return (
       <React.Fragment >
         <div className="navbar-nav pr-5 dropdown  float-right">
           <a
             className="nav-link dropdown-toggle float-right"
             href="#"
-            id={user.login}
+            id={user.id}
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
           >
-            {user.login}
+            {user.firstName} {user.lastName}
           </a>
           <div className="dropdown-menu float-right pr-5" aria-labelledby={user}>
             <NavLink to="/profile" className="dropdown-item" >
               Profile
             </NavLink>
-            <NavLink to="/" className="dropdown-item" onClick={() => setLoginState(false, '')} >
+            <NavLink to="/" className="dropdown-item" onClick={() => { LogoutUser(); setLoginState(null); }} >
               Logout
             </NavLink>
           </div>

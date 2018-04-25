@@ -5,9 +5,8 @@ export class ComAddUserForm extends Component {
     super(props);
     this.fields = [
       { label: 'email', reg: /^\w+@\w+\.[a-z]{2,}$/ },
-      { label: 'login', reg: /^[^ ]{3,20}$/ },
-      { label: 'first name', reg: /^[^ ]{3,20}$/ },
-      { label: 'last name', reg: /^[^ ]{3,20}$/ },
+      { label: 'firstName', reg: /^[^ ]{3,20}$/ },
+      { label: 'lastName', reg: /^[^ ]{3,20}$/ },
       { label: 'password', reg: /^[^ ]{6,20}$/, secure: true },
       { label: 'repeat password', reg: /^[^ ]{6,20}$/, secure: true }
     ];
