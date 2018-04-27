@@ -1,14 +1,6 @@
 import { NavLink } from 'react-router-dom';
+import { logOut } from '../services';
 
-const LogoutUser = () => {
-  fetch('http://localhost:8081/logout', {
-    method: 'GET',
-    credentials: 'include',
-    headers: {
-      'Content-type': 'application/json; charset=utf-8'
-    }
-  });
-};
 
 export const ComUserNav = ({
   user, setLoginState
@@ -31,7 +23,7 @@ export const ComUserNav = ({
             <NavLink to="/profile" className="dropdown-item" >
               Profile
             </NavLink>
-            <NavLink to="/" className="dropdown-item" onClick={() => { LogoutUser(); setLoginState(null); }} >
+            <NavLink to="/" className="dropdown-item" onClick={() => { logOut(); setLoginState(null); }} >
               Logout
             </NavLink>
           </div>
@@ -41,7 +33,7 @@ export const ComUserNav = ({
   }
   return (
     <div className="navbar-nav pr-5 dropdown  float-right">
-      <NavLink to="/registration" className="" >
+      <NavLink to="/registration" className="nav-link" >
         Registration
       </NavLink>
     </div>

@@ -20,8 +20,10 @@ export class Login extends Component {
     e.preventDefault();
     login({ email: email.value, password: password.value })
       .then((data) => {
+        console.log(data, 'login');
         this.props.onLogin(data);
-      });
+      })
+      .catch(console.log);
 
     // setTimeout(() => {
     //   this.setState({ showLoader: false });

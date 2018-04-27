@@ -10,16 +10,18 @@ export class RouteProtected extends Component {
     return (
       <Switch>
         <Redirect from="/login" to="/" />
+
         <Route
           path="/"
           exact
-          component={Main}
+          render={() => <Main user={this.props.user} />}
         />
         <Route
           path="/home"
           exact
-          component={Main}
+          render={() => <Main user={this.props.user} />}
         />
+
         <Route
           path="/profile"
           render={() => <Profile user={this.props.user} />}

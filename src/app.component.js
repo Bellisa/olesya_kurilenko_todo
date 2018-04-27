@@ -10,12 +10,17 @@ import { checkUser } from './services';
 
 export class App extends Component {
   state = {
-    user: undefined
+    user: undefined,
+    loadCookies: false
   }
   componentDidMount() {
     checkUser()
       .then((data) => {
-        this.setLoginState(data);
+        !data.error ?
+          this.setLoginState(data) :
+          console.log(data.error);
+
+        this.setState({ loadCookies: true });
       })
       .catch(err => console.log('Can\'t login', err));
   }
@@ -25,7 +30,7 @@ export class App extends Component {
     this.setState({ user });
   }
   render() {
-    const { user } = this.state;
+    const { user, loadCookies } = this.state;
 
     return (
       <React.Fragment >
@@ -37,7 +42,7 @@ export class App extends Component {
           <div className="row ">
             <div className="my-3 p-3 col-md-12 bg-white rounded box-shadow min-height">
               {
-                user !== undefined ?
+                loadCookies ?
                   <Pages
                     setLoginState={this.setLoginState}
                     user={user}

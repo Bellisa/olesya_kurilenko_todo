@@ -7,4 +7,14 @@ export const login = (data = {}) => rest.post(
 
 export const checkUser = () => rest.get('public/checkUser');
 
-export const logOut = () => rest.get('public/logout');
+export const logOut = () => rest.get('logout');
+
+export const registration = data => rest.post(
+  'public/user',
+  data
+);
+
+export const updateUser = data => rest.post(
+  'public/user',
+  data
+);

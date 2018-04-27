@@ -1,29 +1,41 @@
 import PropTypes from 'prop-types';
+import { registration } from '../services';
+import { Redirect } from 'react-router-dom';
 
 export class ComAddUserForm extends Component {
   constructor(props) {
     super(props);
     this.fields = [
-      { label: 'email', reg: /^\w+@\w+\.[a-z]{2,}$/ },
-      { label: 'firstName', reg: /^[^ ]{3,20}$/ },
-      { label: 'lastName', reg: /^[^ ]{3,20}$/ },
-      { label: 'password', reg: /^[^ ]{6,20}$/, secure: true },
+      { label: 'id', reg: /^\d+$/, template: true },
+      { label: 'email', reg: /^\w+@\w+\.[a-z]{2,}$/, template: true },
+      { label: 'firstName', reg: /^[^ ]{3,20}$/, template: true },
+      { label: 'lastName', reg: /^[^ ]{3,20}$/, template: true },
+      {
+        label: 'password',
+        reg: /^[^ ]{6,20}$/,
+        secure: true,
+        template: true
+      },
       { label: 'repeat password', reg: /^[^ ]{6,20}$/, secure: true }
     ];
 
     this.state = { error: '' };
+    this.state = { needRedirect: false };
 
     this.fields.forEach(field => (this.state[field.label] = { value: this.getPropsValue(field.label) }));
+    // if (this.props.user && this.props.user.id) {
+    //   Object.assign(this.state, { id: this.props.user.id });
+    // }
   }
+
   getPropsValue = (name) => {
-    console.log(name);
     if (!this.props.user) {
       return '';
     }
     if (this.props.user[name]) {
       return this.props.user[name];
     }
-    return 'z';
+    return '';
   }
   setValue = ({ target }) => {
     this.setState({ [target.name]: { value: target.value } });
@@ -31,8 +43,6 @@ export class ComAddUserForm extends Component {
   validate = (index) => {
     const field = this.fields[index];
     const stateField = this.state[field.label];
-    // this.state = { email: { value: 'text' } ...}
-    // stateField = { value: 'text' }
     if (field.reg.test(stateField.value)) {
       stateField.error = ''; // { value: 'text', error: '' }
     } else {
@@ -40,6 +50,7 @@ export class ComAddUserForm extends Component {
       this.setState({ [field.label]: stateField });
     }
   }
+
   save = (event) => {
     const { state } = this;
     let error = '';
@@ -56,14 +67,20 @@ export class ComAddUserForm extends Component {
       return;
     }
     const res = this.getFormValue();
-    setTimeout(() => { }, 5000);
-    console.log(res);
+    if (!this.props.user) {
+      registration(res)
+        .then((user) => {
+          this.setState(Object.assign({}, user));
+          this.setState({ needRedirect: true });
+        })
+        .catch(console.log);
+    }
   }
 
   getFormValue() {
     const form = {};
 
-    this.fields.forEach((field) => {
+    this.fields.filter(val => (val.template)).forEach((field) => {
       form[field.label] = this.state[field.label].value;
     });
     return form;
@@ -86,7 +103,11 @@ export class ComAddUserForm extends Component {
     const { state, fields } = this;
     const { excluded = [], disabled = [] } = this.props;
     return (
+
       <div className="p-3 mb-3 col-md-6  bg-light rounded">
+        {
+          this.state.needRedirect && <Redirect from="/registration" to="/success" />
+        }
         <form onSubmit={this.save} >
           {
             fields

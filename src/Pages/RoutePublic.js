@@ -1,6 +1,7 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { Login } from './Login';
 import { UserRegistration } from './UserRegistration/UserRegistration';
+import { Success } from './Success';
 
 export class RoutePublic extends Component {
   render() {
@@ -13,6 +14,11 @@ export class RoutePublic extends Component {
         <Route
           path="/registration"
           component={UserRegistration}
+        />
+        <Route
+          path="/Success"
+          exact
+          component={Success}
         />
         <Redirect to="login" />
       </Switch>

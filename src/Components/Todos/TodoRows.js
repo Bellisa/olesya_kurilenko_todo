@@ -7,7 +7,7 @@ export const TodoRows = (props) => {
       <div className="clearfix">
         <NavLink
           to={{
-            pathname: `/tasks/${props.todo.id}?day=${props.todo.day}`,
+            pathname: `/tasks/${props.todo.id}`,
             state: props.todo
           }}
         >
@@ -22,7 +22,7 @@ export const TodoRows = (props) => {
       <div className="clearfix">
         <NavLink
           to={{
-            pathname: `/tasks/${props.todo.id}?day=${props.todo.day}`,
+            pathname: `/tasks/${props.todo.id}`,
             state: props.todo
           }}
         >
@@ -36,7 +36,7 @@ export const TodoRows = (props) => {
     <div className="clearfix content-short">
       <NavLink
         to={{
-          pathname: `/tasks/${props.todo.id}?day=${props.todo.day}`,
+          pathname: `/tasks/${props.todo.id}`,
           state: props.todo
         }}
       >
@@ -48,17 +48,17 @@ export const TodoRows = (props) => {
       <span
         className="todo-del-right"
         aria-hidden="true"
-        onClick={() => (props.onTodoClick ? props.onTodoClick(props.todo.id, props.actions[0]) : _ => _)}
+        onClick={() => (props.onTodoClick ? props.onTodoClick(props.todo, props.actions[0]) : _ => _)}
       />
       <span
         className="todo-compl-right"
         aria-hidden="true"
-        onClick={() => props.onTodoClick(props.todo.id, props.actions[1])}
+        onClick={() => props.onTodoClick(props.todo, props.actions[1])}
       />
       <span
         className="todo-proc-right"
         aria-hidden="true"
-        onClick={() => props.onTodoClick(props.todo.id, props.actions[2])}
+        onClick={() => props.onTodoClick(props.todo, props.actions[2])}
       />
     </div >
   );
