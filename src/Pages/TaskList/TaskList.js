@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { Tabs, Tab } from '../../Components/Tabs/';
 import { TodoRows } from '../../Components/Todos/';
 import { days, NEW_TASK } from '../../constants';
-import { getTodos } from '../../services';
+import { getTodos, deleteTask, updateTask } from '../../services';
 
 export class TaskList extends Component {
   actions = ['delete', 'complete', 'processing'];
@@ -12,68 +12,79 @@ export class TaskList extends Component {
     if (day === '') {
       day = new Date().getDay();
     }
-    console.log(day);
     this.state = {
       todos: [],
       selectedIndex: Number(day)
     };
   }
 
-  onActionsClick = (id, extion) => {
+  onActionsClick = (el, extion) => {
+    this.setState({
+      selectedIndex: Number(el.day)
+    });
+    if (!confirm(`Are you sure (${extion}) '${el.title}'?`)) { return; }
+
     switch (extion) {
       case 'delete':
+        deleteTask(el.id)
+          .then(res => this.needUpdateState(this.deleteTask(res, this.state.todos)));
         break;
       case 'complete':
-        break;
       case 'processing':
+        el.done = extion === 'complete';
+        updateTask(el)
+          .then(res => this.needUpdateState(this.updateTasks(res, this.state.todos)));
         break;
     }
-    console.log(id, extion);
   }
-  // static getDerivedStateFromProps(nextProps, prevState) {
-  //   if (prevState.todos !== nextProps.todos) {
-  //     return { todos: nextProps.todos };
-  //   }
-  //   return null;
-  // }
+
+  updateTasks = (task, tasks) => tasks.map(day => day.map(ts => ((ts.id === task.id) ? { ...task } : ts)));
+
+  deleteTask = (task, tasks) => tasks.map(day => day.filter(e => e.id !== task.id));
+
+  needUpdateState = (todos) => {
+    this.setState({
+      todos
+    });
+  }
+
   componentDidMount() {
     getTodos()
       .then((todos) => {
-        console.log(todos, 'todos');
-        this.setState({
-          todos
-        });
+        this.needUpdateState(todos);
       })
       .catch();
   }
 
   render() {
     return (
-      <Tabs selectedIndex={this.state.selectedIndex}>
-        {
-          this.state.todos.map((todos, index) =>
-            (
-              <Tab
-                key={index}
-                title={days[index]}
-              >
-                {todos.map(task =>
-                  (<TodoRows
-                    key={task.id}
-                    onTodoClick={this.onActionsClick}
-                    actions={this.actions}
-                    todo={task}
-                  />))}
-                <NavLink
-                  className="btn btn-primary"
-
-                  to={`/tasks/${NEW_TASK}?day=${index}`}
+      <React.Fragment>
+        <Tabs selectedIndex={this.state.selectedIndex}>
+          {
+            this.state.todos.map((todos, index) =>
+              (
+                <Tab
+                  key={index}
+                  title={days[index]}
                 >
-                  Add
-                </NavLink>
-              </Tab>))
-        }
-      </Tabs >
+                  {todos.map(task =>
+                    (<TodoRows
+                      key={task.id}
+                      onTodoClick={this.onActionsClick}
+                      actions={this.actions}
+                      todo={task}
+                    />))}
+                  <NavLink
+                    className="btn btn-primary"
+
+                    to={`/tasks/${NEW_TASK}?day=${index}`}
+                  >
+                    Add
+                  </NavLink>
+                </Tab>))
+          }
+        </Tabs >
+      </React.Fragment>
     );
   }
 }
