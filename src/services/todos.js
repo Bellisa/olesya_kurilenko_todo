@@ -6,7 +6,7 @@ export const getTaskInfo = () => rest.get('info');
 
 export const getTaskById = (id = 0) => rest.get(`tasks/${id}`);
 
-export const updateTask = (task = { id: 0 }) => rest.post(
+export const updateTask = task => rest.put(
   `tasks/${task.id}`,
   task
 );

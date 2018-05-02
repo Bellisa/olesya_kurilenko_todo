@@ -1,16 +1,21 @@
 import { NavLink } from 'react-router-dom';
 import { Tabs, Tab } from '../../Components/Tabs/';
 import { TodoRows } from '../../Components/Todos/';
-import { days } from '../../constants';
+import { days, NEW_TASK } from '../../constants';
 import { getTodos } from '../../services';
 
 export class TaskList extends Component {
   actions = ['delete', 'complete', 'processing'];
   constructor(props) {
     super(props);
-
+    let day = this.props.location.search.replace(/\D+/, '') || '';
+    if (day === '') {
+      day = new Date().getDay();
+    }
+    console.log(day);
     this.state = {
-      todos: []
+      todos: [],
+      selectedIndex: Number(day)
     };
   }
 
@@ -44,7 +49,7 @@ export class TaskList extends Component {
 
   render() {
     return (
-      <Tabs selectedIndex={new Date().getDay()}>
+      <Tabs selectedIndex={this.state.selectedIndex}>
         {
           this.state.todos.map((todos, index) =>
             (
@@ -62,14 +67,7 @@ export class TaskList extends Component {
                 <NavLink
                   className="btn btn-primary"
 
-                  to={{
-                    pathname: '/tasks/new',
-                    state: {
-                      id: 0,
-                      day: index,
-                      title: ''
-                    }
-                  }}
+                  to={`/tasks/${NEW_TASK}?day=${index}`}
                 >
                   Add
                 </NavLink>

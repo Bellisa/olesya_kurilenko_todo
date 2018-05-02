@@ -1,29 +1,68 @@
-import { updateTask, addTask } from '../../services';
-import { fullDays } from '../../constants';
+import { Redirect } from 'react-router-dom';
+import { updateTask, addTask, getTaskById } from '../../services';
+import { fullDays, NEW_TASK } from '../../constants';
 
 export class Task extends Component {
   constructor(props) {
     super(props);
-    this.state = Object.assign({}, props.location.state);
+    // this.state = Object.assign({}, props.location.state);
+    this.state = {
+      description: '',
+      title: '',
+      day: 0,
+      id: 0
+    };
+  }
+
+  componentDidMount() {
+    if (this.props.match.params.task === NEW_TASK) {
+      const day = this.props.location.search.replace(/\D+/, '') || '';
+      console.log(day, 'day');
+      this.setState({ day });
+      return;
+    }
+    const id = this.props.match.params.task || 0;
+
+    getTaskById(id)
+      .then((task) => {
+        console.log(task, 'todos');
+        // this.setState(Object.assign({}, task));
+        this.setState({ ...task });
+      })
+      .catch(console.log);
   }
 
   onSetStateValue = ({ target }) => {
     this.setState({ [target.name]: target.value });
   }
+
   save = (e) => {
-    const data = this.getTest();
+    const prom = (this.state.id && this.state.id > 0) ? updateTask(this.state) : addTask(this.state);
     e.preventDefault();
-    if (this.state.id && this.state.id > 0) {
-      updateTask(data)
-        .then(res => this.setState(res))
-        .catch(console.log);
-    } else {
-      addTask(data)
-        .then(res => this.setState(res))
-        .catch(console.log);
-    }
+    prom
+      .then(() => this.props.history.push(`/tasks?day=${this.state.day}`))
+      .catch(console.log);
+    // if (this.state.id && this.state.id > 0) {
+    //   console.log(this.state, 'start update');
+
+    //   updateTask(this.state)
+    //     .then((res) => {
+    //       console.log(res);
+    //       // this.setState(res);
+    //       // this.setState({ needRedirect: true });
+    //     })
+    //     .catch(console.log);
+    // } else {
+    //   const data = this.getTask();
+    //   addTask(data)
+    //     .then((res) => {
+    //       this.setState(res);
+    //       this.setState({ needRedirect: true });
+    //     })
+    //     .catch(console.log);
+    // }
   }
-  getTest = () => {
+  getTask = () => {
     const task = {};
     if (this.state.id && this.state.id > 0) {
       task.id = this.state.id;
@@ -36,9 +75,13 @@ export class Task extends Component {
     }
     return task;
   }
+
   render() {
     return (
       <div className="p-3 mb-3 col-md-6  bg-light rounded">
+        {
+          this.state.needRedirect && <Redirect to="/tasks" />
+        }
         <form onSubmit={this.save} >
           <div className="form-group">
             <p>{fullDays[this.state.day]}</p>

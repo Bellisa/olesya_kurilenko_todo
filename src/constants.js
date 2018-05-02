@@ -7,4 +7,8 @@ export const users = [
 ];
 
 export const days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
-export const fullDays = ['Воскрусенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббoта'];
+
+export const fullDays = ['Воскрeсенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббoта'];
+
+export const NEW_TASK = 'newTask';
+

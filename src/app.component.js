@@ -22,7 +22,10 @@ export class App extends Component {
 
         this.setState({ loadCookies: true });
       })
-      .catch(err => console.log('Can\'t login', err));
+      .catch((err) => {
+        this.setLoginState(null);
+        console.log('Can\'t login', err);
+      });
   }
 
   setLoginState = (user) => {

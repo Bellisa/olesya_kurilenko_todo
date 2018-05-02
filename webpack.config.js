@@ -54,7 +54,9 @@ module.exports = {
           options: {
             presets: ['env', 'react'],
             plugins: ['syntax-dynamic-import',
-              'transform-class-properties']
+              'transform-class-properties',
+              'transform-object-rest-spread'
+            ]
           }
         }
       },
