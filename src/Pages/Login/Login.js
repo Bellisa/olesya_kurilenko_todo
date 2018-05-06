@@ -1,5 +1,7 @@
+import { ToastContainer } from 'react-toastr';
 import { Loading } from '../../Components/Loading/Loading';
 import { login } from '../../services';
+
 
 export class Login extends Component {
   constructor(props) {
@@ -34,6 +36,10 @@ export class Login extends Component {
   render() {
     return (
       <React.Fragment >
+        <ToastContainer
+          ref={ref => this.container = ref}
+          className="toast-top-right"
+        />
         <form onSubmit={this.submit}>
           <input
             type="text"

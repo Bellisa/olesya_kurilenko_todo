@@ -1,7 +1,26 @@
 import { ComAddUserForm } from '../../Components/ComAddUserForm';
+import { updateUser } from '../../services';
 
-export const Profile = ({ user }) => (
-  <React.Fragment >
-    <ComAddUserForm user={user} disabled={['email']} excluded={['id']} />
-  </React.Fragment>
-);
+
+export class Profile extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  onSubmit = (data) => {
+    console.log(data, 'registration');
+    updateUser(data)
+      .then((user) => {
+
+      })
+      .catch(console.log);
+  }
+
+  render() {
+    return (
+      <React.Fragment >
+        <ComAddUserForm user={this.props.user} disabled={['email']} excluded={['id']} />
+      </React.Fragment>
+    );
+  }
+}

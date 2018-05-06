@@ -15,3 +15,4 @@ export const addTask = (task = {}) => rest.post(
   task
 );
 
+export const deleteTask = id => rest.delete(`tasks/${id}`);
