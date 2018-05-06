@@ -1,152 +1,130 @@
-import PropTypes from 'prop-types';
-import { registration } from '../services';
-import { Redirect } from 'react-router-dom';
+// import './form.scss';
 
 export class ComAddUserForm extends Component {
+
+  static get fields() {
+    return [
+      { id: 'email', label: 'email', reg: /^\w+@\w+\.[a-z]{2,}$/ },
+      { id: 'firstName', label: 'first name', reg: /^[^ ]{3,20}$/ },
+      { id: 'lastName', label: 'last name', reg: /^[^ ]{3,20}$/ },
+      {
+        id: 'password', label: 'password', reg: /^[^ ]{6,20}$/, secure: true
+      },
+      {
+        id: 'repeatPassword', label: 'repeat password', reg: /^[^ ]{6,20}$/, secure: true
+      }];
+  }
+
   constructor(props) {
     super(props);
-    this.fields = [
-      { label: 'id', reg: /^\d+$/, template: true },
-      { label: 'email', reg: /^\w+@\w+\.[a-z]{2,}$/, template: true },
-      { label: 'firstName', reg: /^[^ ]{3,20}$/, template: true },
-      { label: 'lastName', reg: /^[^ ]{3,20}$/, template: true },
-      {
-        label: 'password',
-        reg: /^[^ ]{6,20}$/,
-        secure: true,
-        template: true
-      },
-      { label: 'repeat password', reg: /^[^ ]{6,20}$/, secure: true }
-    ];
-
+    this.fields = ComAddUserForm.fields;
     this.state = { error: '' };
-    this.state = { needRedirect: false };
-
-    this.fields.forEach(field => (this.state[field.label] = { value: this.getPropsValue(field.label) }));
-    // if (this.props.user && this.props.user.id) {
-    //   Object.assign(this.state, { id: this.props.user.id });
-    // }
+    this.fields.forEach(field => (this.state[field.id] = { value: '' }));
   }
 
-  getPropsValue = (name) => {
-    if (!this.props.user) {
-      return '';
+  static getDerivedStateFromProps(nextProps) {
+    if (!nextProps.user) {
+      return null;
     }
-    if (this.props.user[name]) {
-      return this.props.user[name];
-    }
-    return '';
+    const stateTemp = {};
+    ComAddUserForm.fields.forEach(({ id }) => (stateTemp[id] = { value: nextProps.user[id] }));
+    return stateTemp;
   }
-  setValue = ({ target }) => {
-    this.setState({ [target.name]: { value: target.value } });
-  }
+
+  setValue = ({ target }) => { this.setState({ [target.name]: { value: target.value } }); }
+
   validate = (index) => {
     const field = this.fields[index];
-    const stateField = this.state[field.label];
+    const stateField = this.state[field.id];
     if (field.reg.test(stateField.value)) {
-      stateField.error = ''; // { value: 'text', error: '' }
-    } else {
-      stateField.error = `${field.label} is invalid`; // { value: 'text', error: '...' } }
-      this.setState({ [field.label]: stateField });
-    }
+      stateField.error = '';
+    } else { stateField.error = `${field.label} is invalid`; }
+    this.setState({ [field.id]: stateField });
+  }
+
+  getDisabledState() {
+    return this.getActualFields().some(({ id }) => {
+      const { value, error } = this.state[id];
+      return !value || error;
+    });
   }
 
   save = (event) => {
     const { state } = this;
-    let error = '';
-
-    event.preventDefault();
-    const pwd = { psw: 'password', repPsw: 'repeat password' };
-    if (state[pwd.psw].value !== state[pwd.repPsw].value) {
-      error = 'Password should be same';
+    let error = ''; event.preventDefault();
+    if (state.password.value !== state.repeatPassword.value) {
+      error = 'Passwords should be the same';
     }
-
     this.setState({ error });
-
-    if (error) {
-      return;
-    }
-    const res = this.getFormValue();
-    if (!this.props.user) {
-      registration(res)
-        .then((user) => {
-          this.setState(Object.assign({}, user));
-          this.setState({ needRedirect: true });
-        })
-        .catch(console.log);
-    }
+    if (error) return;
+    this.props.onSubmit(this.getFormValue());
   }
 
   getFormValue() {
     const form = {};
-
-    this.fields.filter(val => (val.template)).forEach((field) => {
-      form[field.label] = this.state[field.label].value;
-    });
+    this.fields
+      .filter(field => !this.props.excluded
+        .includes(field.id))
+      .filter(field => !this.props.skipped
+        .includes(field.id))
+      .forEach(field => form[field.id] = this.state[field.id].value);
     return form;
   }
 
-  getDisableState() {
-    const { excluded = [], disabled = [] } = this.props;
-
+  getActualFields() {
     return this.fields
-      .filter(({ label }) => !excluded.includes(label) && !disabled.includes(label))
-      .some(({ label }) => {
-        const { value, error } = this.state[label];
-        return !value || error;
-      });
+      .filter(field => !this.props.excluded
+        .includes(field.id))
+      .filter(field => !this.props.skipped
+        .includes(field.id))
+      .filter(field => !this.props.disabled
+        .includes(field.id));
   }
-  getFormObj = () => {
 
-  }
   render() {
     const { state, fields } = this;
-    const { excluded = [], disabled = [] } = this.props;
+    const { excluded, disabled } = this.props;
     return (
-
-      <div className="p-3 mb-3 col-md-6  bg-light rounded">
-        {
-          this.state.needRedirect && <Redirect from="/registration" to="/success" />
-        }
-        <form onSubmit={this.save} >
+      <form className="form" onSubmit={this.save} >
+        <div className="p-3 mb-3 col-md-6  bg-light rounded">
           {
             fields
-              .filter(({ label }) => !excluded.includes(label))
-              .map(({ label, secure }, index) => {
-                const stateField = state[label];
+              .filter(({ id }) => !excluded
+                .includes(id))
+              .map(({ label, secure, id }, index) => {
+                const stateField = state[id];
                 return (
                   <div className="form-group" key={label}>
                     <input
-                      disabled={disabled.includes(label)}
                       type={secure ? 'password' : 'text'}
-                      value={stateField.value}
-                      className={stateField.error ? 'form-control error' : 'form-control '}
-                      name={label}
+                      name={id}
+                      className={stateField.error ? 'error' : 'correct'}
                       placeholder={label.toUpperCase()}
+                      value={stateField.value}
                       onChange={this.setValue}
                       onBlur={() => this.validate(index)}
+                      disabled={disabled.includes(id)}
                     />
-                    {stateField.error && <span>{stateField.error}</span>}
-                  </div>
-                );
-              })
+                    {
+                      stateField.error && <span className="error-text">{stateField.error}</span>}
+                  </div>);
+              })}
+
+          {
+            state.error && <span className="error-text">{state.error}</span>
           }
-          {this.state.error && <span>{this.state.error}</span>}
           <div className="form-group">
-            <button type="submit" className="btn btn-primary" disabled={this.getDisableState()} >Submit</button>
+            <button type="submit" className="btn btn-primary" disabled={this.getDisabledState()} >Submit</button>
           </div>
-        </form>
-      </div>
-    );
+        </div>
+      </form>);
   }
 }
 
-ComAddUserForm.propTypes = {
-  excluded: PropTypes.array,
-  disabled: PropTypes.array
-};
-
 ComAddUserForm.defaultProps = {
   excluded: [],
-  disabled: []
+  disabled: [],
+  skipped: [],
+  onSubmit: _ => _
 };
+
