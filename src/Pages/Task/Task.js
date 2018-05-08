@@ -21,6 +21,7 @@ export class Task extends Component {
       this.setState({ day });
       return;
     }
+
     const id = this.props.match.params.task || 0;
 
     getTaskById(id)
@@ -42,25 +43,6 @@ export class Task extends Component {
     prom
       .then(() => this.props.history.push(`/tasks?day=${this.state.day}`))
       .catch(console.log);
-    // if (this.state.id && this.state.id > 0) {
-    //   console.log(this.state, 'start update');
-
-    //   updateTask(this.state)
-    //     .then((res) => {
-    //       console.log(res);
-    //       // this.setState(res);
-    //       // this.setState({ needRedirect: true });
-    //     })
-    //     .catch(console.log);
-    // } else {
-    //   const data = this.getTask();
-    //   addTask(data)
-    //     .then((res) => {
-    //       this.setState(res);
-    //       this.setState({ needRedirect: true });
-    //     })
-    //     .catch(console.log);
-    // }
   }
   getTask = () => {
     const task = {};
