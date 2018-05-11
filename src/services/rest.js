@@ -11,6 +11,8 @@ export const request = (url, method = 'GET', body, options) => {
 
   Object.assign(fetchOpts, options);
 
+  console.log(`${BASE_URL}${url}`, fetchOpts, this, 'fetchOpts');
+
   const promise = fetch(`${BASE_URL}${url}`, fetchOpts)
     .then(response => response.json())
     .then((data) => {

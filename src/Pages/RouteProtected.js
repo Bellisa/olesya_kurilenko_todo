@@ -14,17 +14,17 @@ export class RouteProtected extends Component {
         <Route
           path="/"
           exact
-          render={() => <Main user={this.props.user} />}
+          render={() => <Main />}
         />
         <Route
           path="/home"
           exact
-          render={() => <Main user={this.props.user} />}
+          render={() => <Main />}
         />
 
         <Route
           path="/profile"
-          render={() => <Profile user={this.props.user} />}
+          render={() => <Profile />}
         />
         <Route
           path="/tasks"

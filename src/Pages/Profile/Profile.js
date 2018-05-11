@@ -1,19 +1,21 @@
+import { connect } from 'react-redux';
 import { ComAddUserForm } from '../../Components/ComAddUserForm';
-import { updateUser } from '../../services';
+import { updateUserAsyc } from '../../services';
 
 
-export class Profile extends Component {
+export class ProfileComponent extends Component {
   constructor(props) {
     super(props);
   }
 
   onSubmit = (data) => {
     console.log(data, 'registration');
-    updateUser(data)
-      .then((user) => {
+    this.props.dispatch(updateUserAsyc(data));
+    // updateUser(data)
+    //   .then((user) => {
 
-      })
-      .catch(console.log);
+    //   })
+    //   .catch(console.log);
   }
 
   render() {
@@ -24,3 +26,4 @@ export class Profile extends Component {
     );
   }
 }
+export const Profile = connect(({ user }) => ({ user }))(ProfileComponent);

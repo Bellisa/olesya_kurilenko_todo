@@ -1,9 +1,10 @@
 import {
   SET_USER, UPDATE_USER, REMOVE_USER,
-  GET_ALL_TASKS, GET_TASK_BY_ID, ADD_TASK, UPDATE_TASK, DELETE_TASK_BY_ID, SET_ALL_TASKS
+  GET_TASK_BY_ID, ADD_TASK, UPDATE_TASK, DELETE_TASK_BY_ID, SET_ALL_TASKS
 } from './actions';
 
 export const user = (state = false, { type, data }) => {
+  console.log(type, data, 'type, data');
   switch (type) {
     case SET_USER:
     case UPDATE_USER: {
@@ -19,13 +20,10 @@ export const user = (state = false, { type, data }) => {
 
 export const todos = (state = [], action) => {
   console.log(action);
+
   switch (action.type) {
     case ADD_TASK: {
       const newState = [...state, action.task];
-      return newState;
-    }
-    case GET_ALL_TASKS: {
-      const newState = [...state];
       return newState;
     }
     case DELETE_TASK_BY_ID: {
@@ -41,7 +39,6 @@ export const todos = (state = [], action) => {
       return newState;
     }
     case SET_ALL_TASKS: {
-      console.log(action.tasks, 'action.tasks');
       const newState = [...action.tasks];
       return newState;
     }

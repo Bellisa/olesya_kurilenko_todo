@@ -1,7 +1,6 @@
 // import './form.scss';
 
 export class ComAddUserForm extends Component {
-
   static get fields() {
     return [
       { id: 'email', label: 'email', reg: /^\w+@\w+\.[a-z]{2,}$/ },

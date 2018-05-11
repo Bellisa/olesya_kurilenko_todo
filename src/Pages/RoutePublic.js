@@ -9,7 +9,7 @@ export class RoutePublic extends Component {
       <Switch>
         <Route
           path="/login"
-          render={() => <Login onLogin={this.props.setLoginState} />}
+          render={() => <Login />}
         />
         <Route
           path="/registration"

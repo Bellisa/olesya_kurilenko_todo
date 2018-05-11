@@ -14,7 +14,7 @@ export const registration = data => rest.post(
   data
 );
 
-export const updateUser = data => rest.post(
+export const updateUser = data => rest.put(
   'public/user',
   data
 );

@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
-import { NavLink, withRouter } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Tabs, Tab } from '../../Components/Tabs/';
 import { TodoRows } from '../../Components/Todos/';
 import { days, NEW_TASK, actions } from '../../constants';
-import { getTodos, deleteTask, updateTask } from '../../services';
-import { UpdateTask, DeleteTodoById, SetAllTodos } from '../../store';
+import { UpdateTodoAsync, DeleteTodoByIdAsync, GetAllTodosAsync } from '../../store';
 
 export class Tasks extends Component {
   constructor(props) {
@@ -14,7 +13,7 @@ export class Tasks extends Component {
       day = new Date().getDay();
     }
     this.state = {
-      selectedIndex: Number(day)
+      selectedIndex: new Date().getDay()
     };
   }
 
@@ -26,28 +25,18 @@ export class Tasks extends Component {
 
     switch (act) {
       case actions.delete:
-        deleteTask(el.id)
-          .then(res => this.props.deleteTodoById(res.id));
+        this.props.deleteTodoById(el.id);
         break;
       case actions.complete:
       case actions.processing:
         el.done = act === actions.complete;
-        updateTask(el)
-          .then(res => this.props.updateTask(res));
+        this.props.updateTask(el);
         break;
     }
   }
 
-  updateTasks = (task, tasks) => tasks.map(day => day.map(ts => (ts.id === task.id ? { ...task } : { ...ts })));
-
-  deleteTask = (task, tasks) => tasks.map(day => day.filter(e => e.id !== task.id).map(ts => ({ ...ts })));
-
   componentDidMount() {
-    getTodos()
-      .then((todos) => {
-        this.props.setAllTodos(todos);
-      })
-      .catch();
+    this.props.getAllTodos();
   }
 
   render() {
@@ -89,14 +78,15 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   updateTask(value) {
-    dispatch(UpdateTask(value));
+    dispatch(UpdateTodoAsync(value));
   },
   deleteTodoById(value) {
-    dispatch(DeleteTodoById(value));
+    dispatch(DeleteTodoByIdAsync(value));
   },
-  setAllTodos(tasks) {
-    dispatch(SetAllTodos(tasks));
+  getAllTodos() {
+    dispatch(GetAllTodosAsync());
   }
 });
 
-export const TaskList = withRouter(connect(mapStateToProps, mapDispatchToProps)(Tasks));
+export const TaskList = connect(mapStateToProps, mapDispatchToProps)(Tasks);
+// ({user}) =>({user})
