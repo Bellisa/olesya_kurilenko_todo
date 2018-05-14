@@ -8,10 +8,6 @@ import { UpdateTodoAsync, DeleteTodoByIdAsync, GetAllTodosAsync } from '../../st
 export class Tasks extends Component {
   constructor(props) {
     super(props);
-    let day = this.props.location.search.replace(/\D+/, '') || '';
-    if (day === '') {
-      day = new Date().getDay();
-    }
     this.state = {
       selectedIndex: new Date().getDay()
     };
@@ -21,8 +17,6 @@ export class Tasks extends Component {
     this.setState({
       selectedIndex: Number(el.day)
     });
-    if (!confirm(`Are you sure (${act}) '${el.title}'?`)) { return; }
-
     switch (act) {
       case actions.delete:
         this.props.deleteTodoById(el.id);

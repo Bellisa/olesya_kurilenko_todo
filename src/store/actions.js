@@ -47,3 +47,7 @@ export const DeleteTodoById = id => ({ type: DELETE_TASK_BY_ID, id });
 
 export const DELETE_TASK_BY_ID_ASYNC = 'Delete task by id async';
 export const DeleteTodoByIdAsync = id => ({ type: DELETE_TASK_BY_ID_ASYNC, id });
+
+// ///////////// ERROR //////////////////////////////////////
+export const SET_ERROR = 'Set error';
+export const setError = data => ({ type: SET_ERROR, data });

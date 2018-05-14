@@ -1,27 +1,23 @@
 import { connect } from 'react-redux';
 import { ComAddUserForm } from '../../Components/ComAddUserForm';
-import { updateUserAsyc } from '../../services';
+import { updateUserAsync } from '../../store';
 
 
 export class ProfileComponent extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   onSubmit = (data) => {
-    console.log(data, 'registration');
-    this.props.dispatch(updateUserAsyc(data));
-    // updateUser(data)
-    //   .then((user) => {
-
-    //   })
-    //   .catch(console.log);
+    this.props.dispatch(updateUserAsync(data));
   }
 
   render() {
     return (
       <React.Fragment >
-        <ComAddUserForm user={this.props.user} disabled={['email']} excluded={['id']} />
+        <ComAddUserForm
+          user={this.props.user}
+          disabled={['email']}
+          excluded={['id']}
+          skipped={['password', 'repeatPassword']}
+          onSubmit={this.onSubmit}
+        />
       </React.Fragment>
     );
   }

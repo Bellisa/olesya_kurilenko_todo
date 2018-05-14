@@ -9,7 +9,7 @@ import {
   REGIST_USER_ASYNC,
   UPDATE_USER_ASYNC
 
-} from '../actions';
+} from '../actionsUser';
 import {
   checkUser,
   login,
@@ -19,57 +19,52 @@ import {
 } from '../../services';
 
 export function* getUser() {
-  console.log(' ------------ getUser');
-  const user = yield checkUser()
-    .catch(err => console.log(err, ' getUser error'));
-  if (user !== undefined) {
+  try {
+    const user = yield checkUser();
     yield put(SetUser(user));
-  } else {
-    yield put(SetUser(null));
+  } catch (ex) {
+    yield put(RemoveUser());
   }
 }
 export function* watchGetUserAsync() {
   yield takeEvery(GET_USER_ASYNC, getUser);
 }
 
-export function* loginUser(data) {
-  console.log(data, ' loginUser data');
-  const user = yield login(data.data);
-  console.log(user, ' loginUser ---- ');
-  if (user !== undefined) {
+export function* loginUser({ data }) {
+  try {
+    const user = yield login(data);
     yield put(SetUser(user));
-  }
+  } catch (err) { }
 }
 export function* watchLoginUserAsync() {
   yield takeEvery(AUTH_USER_ASYNC, loginUser);
 }
 
 export function* logoutUser() {
-  const user = yield logOut();
-  console.log(user, 'logoutUser ');
-  yield put(RemoveUser());
+  try {
+    yield logOut();
+    yield put(RemoveUser());
+  } catch (ex) { }
 }
 export function* watchLogoutUserAsync() {
   yield takeEvery(LOGOUT_USER_ASYNC, logoutUser);
 }
 
-export function* registUser(data) {
-  const user = yield registration(data.data);
-  console.log(user, 'registUser');
-  if (user !== undefined) {
+export function* registUser({ data }) {
+  try {
+    const user = yield registration(data);
     yield put(SetUser(user));
-  }
+  } catch (err) { }
 }
 export function* watchRegistUserAsync() {
   yield takeEvery(REGIST_USER_ASYNC, registUser);
 }
 
-export function* updateUserAs(data) {
-  const user = yield updateUser(data.data);
-  console.log(user, 'updateUserAs');
-  if (user !== undefined) {
+export function* updateUserAs({ data }) {
+  try {
+    const user = yield updateUser(data);
     yield put(UpdateUser(user));
-  }
+  } catch (err) { }
 }
 export function* watchUpdateUserAsync() {
   yield takeEvery(UPDATE_USER_ASYNC, updateUserAs);

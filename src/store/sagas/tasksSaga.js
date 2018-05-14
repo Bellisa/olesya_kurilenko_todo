@@ -6,7 +6,7 @@ import {
   SetAllTodos,
   UpdateTodo,
   DeleteTodoById
-} from '../actions';
+} from '../actionsTask';
 import {
   getTodos,
   deleteTask,
@@ -14,34 +14,30 @@ import {
 } from '../../services';
 
 export function* getTodosAsync() {
-  const tasks = yield getTodos()
-    .catch(err => console.log(err, ' get tasks error'));
-
-  if (tasks !== undefined) {
+  try {
+    const tasks = yield getTodos();
     yield put(SetAllTodos(tasks));
-  }
+  } catch (err) { }
 }
 export function* watchGetTodosAsync() {
   yield takeEvery(GET_ALL_TASKS_ASYNC, getTodosAsync);
 }
 
 export function* updateTodosAsync(data) {
-  const tasks = yield updateTask(data.task)
-    .catch(err => console.log(err, ' update tasks error'));
-  if (tasks !== undefined) {
+  try {
+    const tasks = yield updateTask(data.task);
     yield put(UpdateTodo(tasks));
-  }
+  } catch (err) { }
 }
 export function* watchUpdateTodoAsync() {
   yield takeEvery(UPDATE_TASK_ASYNC, updateTodosAsync);
 }
 
 export function* deleteTodosAsync(data) {
-  const tasks = yield deleteTask(data.id)
-    .catch(err => console.log(err, ' deletes tasks error'));
-  if (tasks !== undefined) {
+  try {
+    const tasks = yield deleteTask(data.id);
     yield put(DeleteTodoById(tasks.id));
-  }
+  } catch (err) { }
 }
 export function* watchDeleteTodoAsync() {
   yield takeEvery(DELETE_TASK_BY_ID_ASYNC, deleteTodosAsync);

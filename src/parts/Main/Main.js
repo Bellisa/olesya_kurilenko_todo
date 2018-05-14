@@ -14,11 +14,10 @@ export class MainComponent extends Component {
   componentDidMount() {
     getTaskInfo()
       .then(info => this.setState({ info }))
-      .catch(console.log);
+      .catch();
   }
   render() {
     const { user } = this.props || {};
-    console.log(user, this.state.info);
     return (
       <React.Fragment>
         <main className="main">

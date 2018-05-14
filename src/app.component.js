@@ -6,16 +6,17 @@ import 'jquery';
 import './app.scss';
 import { Header } from './parts/Header';
 import { Pages } from './Pages/Pages';
-import { errObserver } from './services';
-import { getUserAsync } from './store';
-
-// import { Footer } from './Footer';
+import { getUserAsync, setError } from './store';
 
 export class AppComponent extends Component {
-  componentDidMount() {
-    errObserver.addObserver((err = 'Something wrong') =>
-      this.props.user !== false && this.container.error(<strong>{err}</strong>, <em>Error</em>));
+  componentDidUpdate() {
+    if (this.props.error) {
+      this.container.error(<strong>{this.props.error}</strong>, <em>Error</em>);
+      this.props.dispatch(setError(''));
+    }
+  }
 
+  componentDidMount() {
     this.props.dispatch(getUserAsync());
   }
 
@@ -49,7 +50,8 @@ export class AppComponent extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  error: state.error
 });
 
 export const App = withRouter(connect(mapStateToProps)(AppComponent));
