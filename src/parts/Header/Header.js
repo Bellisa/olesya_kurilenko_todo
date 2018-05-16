@@ -1,9 +1,10 @@
+
+
 import './header.scss';
 import { Navigation } from '../Navigation/';
-import { pages } from './constants';
 
-export const Header = ({ user, login, setLoginState }) => (
+export const Header = () => (
   <header className="header">
-    <Navigation pages={pages} user={user} login={login} setLoginState={setLoginState} />
+    <Navigation />
   </header>
 );

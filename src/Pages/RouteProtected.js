@@ -5,39 +5,21 @@ import { NotFound } from './NotFound';
 import { Profile } from './Profile/Profile';
 import { Task } from './Task/';
 
-export class RouteProtected extends Component {
-  render() {
-    return (
-      <Switch>
-        <Redirect from="/login" to="/" />
+export const RouteProtected = () => (
+  <Switch>
+    <Redirect from="/login" to="/" />
 
-        <Route
-          path="/"
-          exact
-          render={() => <Main user={this.props.user} />}
-        />
-        <Route
-          path="/home"
-          exact
-          render={() => <Main user={this.props.user} />}
-        />
+    <Route path="/" exact component={Main} />
 
-        <Route
-          path="/profile"
-          render={() => <Profile user={this.props.user} />}
-        />
-        <Route
-          path="/tasks"
-          exact
-          component={TaskList}
-        />
-        <Route
-          path="/tasks/:task"
-          component={Task}
-        />
-        <Route component={NotFound} />
-      </Switch>
-    );
-  }
-}
+    <Route path="/home" exact component={Main} />
+
+    <Route path="/profile" component={Profile} />
+
+    <Route path="/tasks" exact component={TaskList} />
+
+    <Route path="/tasks/:task" component={Task} />
+
+    <Route component={NotFound} />
+  </Switch>
+);
 

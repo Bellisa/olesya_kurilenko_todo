@@ -5,7 +5,6 @@ import { fullDays, NEW_TASK } from '../../constants';
 export class Task extends Component {
   constructor(props) {
     super(props);
-    // this.state = Object.assign({}, props.location.state);
     this.state = {
       description: '',
       title: '',
@@ -17,19 +16,17 @@ export class Task extends Component {
   componentDidMount() {
     if (this.props.match.params.task === NEW_TASK) {
       const day = this.props.location.search.replace(/\D+/, '') || '';
-      console.log(day, 'day');
       this.setState({ day });
       return;
     }
+
     const id = this.props.match.params.task || 0;
 
     getTaskById(id)
       .then((task) => {
-        console.log(task, 'todos');
-        // this.setState(Object.assign({}, task));
         this.setState({ ...task });
       })
-      .catch(console.log);
+      .catch();
   }
 
   onSetStateValue = ({ target }) => {
@@ -40,27 +37,8 @@ export class Task extends Component {
     const prom = (this.state.id && this.state.id > 0) ? updateTask(this.state) : addTask(this.state);
     e.preventDefault();
     prom
-      .then(() => this.props.history.push(`/tasks?day=${this.state.day}`))
-      .catch(console.log);
-    // if (this.state.id && this.state.id > 0) {
-    //   console.log(this.state, 'start update');
-
-    //   updateTask(this.state)
-    //     .then((res) => {
-    //       console.log(res);
-    //       // this.setState(res);
-    //       // this.setState({ needRedirect: true });
-    //     })
-    //     .catch(console.log);
-    // } else {
-    //   const data = this.getTask();
-    //   addTask(data)
-    //     .then((res) => {
-    //       this.setState(res);
-    //       this.setState({ needRedirect: true });
-    //     })
-    //     .catch(console.log);
-    // }
+      .then(() => this.props.history.push('/tasks'))
+      .catch();
   }
   getTask = () => {
     const task = {};

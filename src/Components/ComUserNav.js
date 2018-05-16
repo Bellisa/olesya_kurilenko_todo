@@ -1,7 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import { logOut } from '../services';
-
-
 export const ComUserNav = ({
   user, setLoginState
 }) => {
@@ -23,7 +20,7 @@ export const ComUserNav = ({
             <NavLink to="/profile" className="dropdown-item" >
               Profile
             </NavLink>
-            <NavLink to="/" className="dropdown-item" onClick={() => { logOut(); setLoginState(null); }} >
+            <NavLink to="/" className="dropdown-item" onClick={setLoginState} >
               Logout
             </NavLink>
           </div>

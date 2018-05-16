@@ -1,7 +1,6 @@
 // import './form.scss';
 
 export class ComAddUserForm extends Component {
-
   static get fields() {
     return [
       { id: 'email', label: 'email', reg: /^\w+@\w+\.[a-z]{2,}$/ },
@@ -51,7 +50,8 @@ export class ComAddUserForm extends Component {
 
   save = (event) => {
     const { state } = this;
-    let error = ''; event.preventDefault();
+    let error = '';
+    event.preventDefault();
     if (state.password.value !== state.repeatPassword.value) {
       error = 'Passwords should be the same';
     }
@@ -94,7 +94,7 @@ export class ComAddUserForm extends Component {
               .map(({ label, secure, id }, index) => {
                 const stateField = state[id];
                 return (
-                  <div className="form-group" key={label}>
+                  <div className="form-group" key={id}>
                     <input
                       type={secure ? 'password' : 'text'}
                       name={id}

@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 
+
 const CopyWebpackPlugin = require('copy-webpack-plugin');// for loaded images
 
 const images = ['jpg', 'jpeg', 'png', 'gif', 'svg'];// for loaded images
@@ -37,7 +38,7 @@ const plugins = [
 ];
 
 module.exports = {
-  entry: './app.js',
+  entry: ['babel-polyfill', './app.js'],
   context: path.resolve('src'),
   output: {
     filename: 'bundle-[name].js',
@@ -52,10 +53,12 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env', 'react'],
-            plugins: ['syntax-dynamic-import',
+            presets: ['env', 'react', 'stage-0'],
+            plugins: [
+              'syntax-dynamic-import',
               'transform-class-properties',
-              'transform-object-rest-spread'
+              'transform-object-rest-spread',
+              'transform-regenerator'
             ]
           }
         }

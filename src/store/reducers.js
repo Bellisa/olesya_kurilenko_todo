@@ -1,8 +1,7 @@
-import { SET_USER, UPDATE_USER, REMOVE_USER } from './actions';
+import { SET_USER, UPDATE_USER, REMOVE_USER } from './actionsUser';
+import { GET_TASK_BY_ID, ADD_TASK, UPDATE_TASK, DELETE_TASK_BY_ID, SET_ALL_TASKS } from './actionsTask';
+import { SET_ERROR } from './actionStatus';
 
-// it is typical reducer
-// action should be an object with next pattern:
-// { type: 'ACTION_NAME', payload?: any_js_value }
 export const user = (state = false, { type, data }) => {
   switch (type) {
     case SET_USER:
@@ -17,13 +16,37 @@ export const user = (state = false, { type, data }) => {
   return state;
 };
 
-export const todo = (state = [], action) => {
-  // switch (action.type) {
-  //   // case ADD_TASK: {
-  //   //   const newState = [...state, action.task];
-  //   //   return newState;
-  //   // }
-  // }
+export const todos = (state = [], action) => {
+  switch (action.type) {
+    case ADD_TASK: {
+      const newState = [...state, action.task];
+      return newState;
+    }
+    case DELETE_TASK_BY_ID: {
+      const newState = state.map(day => day.filter(e => e.id !== action.id));
+      return newState;
+    }
+    case UPDATE_TASK: {
+      const newState = state.map(day => day.map(ts => (ts.id === action.task.id ? { ...action.task } : { ...ts })));
+      return newState;
+    }
+    case GET_TASK_BY_ID: {
+      const newState = state.map(day => day.filter(e => e.id === action.id));
+      return newState;
+    }
+    case SET_ALL_TASKS: {
+      const newState = [...action.tasks];
+      return newState;
+    }
+  }
+  return state;
+};
+
+export const error = (state = '', { type, data = '' }) => {
+  switch (type) {
+    case SET_ERROR:
+      return data;
+  }
 
   return state;
 };

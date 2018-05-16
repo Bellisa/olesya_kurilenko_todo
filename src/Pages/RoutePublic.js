@@ -3,25 +3,21 @@ import { Login } from './Login';
 import { UserRegistration } from './UserRegistration/UserRegistration';
 import { Success } from './Success';
 
-export class RoutePublic extends Component {
-  render() {
-    return (
-      <Switch>
-        <Route
-          path="/login"
-          render={() => <Login onLogin={this.props.setLoginState} />}
-        />
-        <Route
-          path="/registration"
-          component={UserRegistration}
-        />
-        <Route
-          path="/Success"
-          exact
-          component={Success}
-        />
-        <Redirect to="login" />
-      </Switch>
-    );
-  }
-}
+export const RoutePublic = () => (
+  <Switch>
+    <Route
+      path="/login"
+      component={Login}
+    />
+    <Route
+      path="/registration"
+      component={UserRegistration}
+    />
+    <Route
+      path="/Success"
+      exact
+      component={Success}
+    />
+    <Redirect to="login" />
+  </Switch>
+);
