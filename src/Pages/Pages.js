@@ -3,9 +3,9 @@ import { RouteProtected } from './RouteProtected';
 
 export const Pages = props => (props.user ?
   (
-    <RouteProtected {...props} />
+    <RouteProtected />
   ) :
   (
-    <RoutePublic {...props} />
+    <RoutePublic />
   ));
 

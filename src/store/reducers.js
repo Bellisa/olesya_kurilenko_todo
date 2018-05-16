@@ -1,9 +1,6 @@
-import {
-  SET_USER, UPDATE_USER, REMOVE_USER,
-  GET_TASK_BY_ID, ADD_TASK, UPDATE_TASK, DELETE_TASK_BY_ID, SET_ALL_TASKS,
-  SET_ERROR
-
-} from './actions';
+import { SET_USER, UPDATE_USER, REMOVE_USER } from './actionsUser';
+import { GET_TASK_BY_ID, ADD_TASK, UPDATE_TASK, DELETE_TASK_BY_ID, SET_ALL_TASKS } from './actionsTask';
+import { SET_ERROR } from './actionStatus';
 
 export const user = (state = false, { type, data }) => {
   switch (type) {
