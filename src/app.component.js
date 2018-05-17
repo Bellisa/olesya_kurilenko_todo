@@ -39,7 +39,7 @@ export class AppComponent extends Component {
                   <Pages
                     user={user}
                   />
-                  : <p>waiting</p>
+                  : <h2>waiting</h2>
               }
             </div>
           </div>
